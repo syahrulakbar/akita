@@ -1,0 +1,12 @@
+{
+  "Index": {
+    "title": "Halo Dunia!",
+    "navigation": {
+      "home": "Beranda",
+      "testimonial": "Testimonial",
+      "about us": "Tentang Kami",
+      "gallery": "Galeri",
+      "blogs": "Berita"
+    }
+  }
+}

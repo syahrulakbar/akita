@@ -1,0 +1,20 @@
+{
+  "Index": {
+    "title": "Hello world!",
+    "navigation": [
+      {
+        "title": "Home",
+        "url": "/"
+      },
+      {
+        "title": "About",
+        "url": "/about"
+      },
+      {
+        "title": "Contact",
+        "url": "/contact"
+      }
+    ],
+    "description": "Akita Japan Fest"
+  }
+}
