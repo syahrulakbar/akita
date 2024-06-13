@@ -34,7 +34,7 @@ export default function About() {
               key={index}
               className="flex flex-col gap-3 group hover:border-sky-500 border p-5 rounded-md overflow-hidden"
             >
-              <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2">
                 <div className="lg:bg-sky-100 group-hover:bg-sky-500  transition-all ease-in-out duration-300 group-hover:text-white text-sky-500  overflow-hidden w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] flex items-center justify-center rounded-full">
                   <Icon name={item.icon} size={24} />
                 </div>

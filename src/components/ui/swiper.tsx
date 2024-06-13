@@ -40,10 +40,10 @@ export default function SwiperComponent() {
                     className="rounded-full object-contain"
                   />
                   <div className="profile">
-                    <h5 className="text-akita font-semibold text-base lg:text-lg">
+                    <h5 className="text-akita font-semibold text-sm sm:text-base lg:text-lg">
                       {client.profile.name}
                     </h5>
-                    <p className="font-light  text-black dark:text-white text-sm lg:text-base">
+                    <p className="font-light  text-black dark:text-white text-xs sm:text-sm lg:text-base">
                       {client.profile.position}
                     </p>
                   </div>

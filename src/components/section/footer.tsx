@@ -57,10 +57,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="w-[90%] pt-3 pb-10 flex flex-col gap-2 lg:flex-row items-center justify-between">
-        <p className="flex flex-row gap-1 items-center ">
-          <span>
-            <Icon name="Copyright" size={15} />
-          </span>
+        <p className="text-center ">
+          &copy;
           {t("credit")}
         </p>
         <SelectLanguage />
