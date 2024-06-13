@@ -6,11 +6,13 @@ import Link from "next/link";
 import { ButtonDarkMode } from "../ui/button-darkmode";
 import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScroll, setIsScroll] = useState(false);
   const { scrollY } = useScroll();
+  const { theme } = useTheme();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest) {
@@ -30,14 +32,8 @@ export default function Navbar() {
         } `}
       >
         <nav className="max-container flex flex-row w-full justify-between lg:justify-around items-center px-2">
-          <Link href={"/"}>
-            <Image
-              width={150}
-              height={100}
-              src={"/images/logo-dark.png"}
-              alt="logo akita"
-              className="object-contain"
-            />
+          <Link href={"/"} className="uppercase font-bold text-xl">
+            Akita Japan Fest
           </Link>
           <ul className="hidden lg:flex gap-5">
             {NAVBAR.map((item, index) => (

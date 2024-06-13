@@ -50,3 +50,62 @@ export const CONTACT = [
     href: "https://www.instagram.com",
   },
 ];
+
+export const CLIENTS = [
+  {
+    message:
+      "Fantastic event! Great atmosphere with authentic Japanese performances and activities.",
+    profile: {
+      name: "Mochamad Syahrul Akbar",
+      position: "CTO Akita Japan Fest",
+      image: "/images/profile/akbar.jpeg",
+    },
+  },
+  {
+    message: "Fun and impressive! Lots of engaging Japanese cultural activities.",
+    profile: {
+      name: "Muhammad Fikri Nabil Assyawali",
+      position: "Founder Akita Japan Fest",
+      image: "/images/profile/akbar.jpeg",
+    },
+  },
+  {
+    message: "Akita Japan Fest was amazing! Best cosplay and Japanese food!",
+    profile: {
+      name: "Pambayun Ginanjar",
+      position: "Founder Akita Japan Fest",
+      image: "/images/profile/akbar.jpeg",
+    },
+  },
+  {
+    message: "Perfect festival for Japan enthusiasts. Highly recommended!",
+    profile: {
+      name: "Avanto Surya Wijaya",
+      position: "CTO Akita Japan Fest",
+      image: "/images/profile/akbar.jpeg",
+    },
+  },
+];
+
+export const DATA = [
+  {
+    icon: "UserRound",
+    total: 1500,
+    title: "Total Visitors",
+  },
+  {
+    icon: "UsersRound",
+    total: 22,
+    title: "Total Comunities",
+  },
+  {
+    icon: "Home",
+    total: 2,
+    title: "Connected Venues",
+  },
+  {
+    icon: "CalendarCheck",
+    total: 2,
+    title: "Successful Events",
+  },
+];

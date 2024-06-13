@@ -39,7 +39,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NextIntlClientProvider>
+          <NextIntlClientProvider messages={messages}>
             <Analytics />
             <link rel="icon" href="/icon.ico" sizes="16x16" />
             <Navbar />

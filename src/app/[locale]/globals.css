@@ -74,3 +74,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+.swiper {
+  @apply w-full h-full;
+}
+
+.swiper-slide {
+  @apply flex items-center justify-center;
+}
+
+.swiper-pagination {
+  @apply flex justify-center mt-4;
+}
+.swiper-pagination-bullet {
+  @apply dark:bg-white !important;
+}
