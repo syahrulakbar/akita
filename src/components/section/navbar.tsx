@@ -33,7 +33,7 @@ export default function Navbar() {
       >
         <nav className="max-container flex flex-row w-full justify-between lg:justify-around items-center px-2">
           <Link href={"/"} className="uppercase font-bold text-xl">
-            Akita Japan Fest
+            秋田県
           </Link>
           <ul className="hidden lg:flex gap-5">
             {NAVBAR.map((item, index) => (

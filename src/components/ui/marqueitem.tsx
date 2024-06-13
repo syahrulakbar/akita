@@ -6,7 +6,7 @@ export default function MarqueItem() {
     <div className="w-full flex flex-row  items-center justify-between gap-5 px-2 ">
       <Image
         src={"/images/logos/sunkiss.svg"}
-        width={100}
+        width={150}
         height={100}
         alt="sunkiss logo"
         className="object-contain "

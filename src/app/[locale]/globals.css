@@ -89,3 +89,39 @@
 .swiper-pagination-bullet {
   @apply dark:bg-white !important;
 }
+
+.logos {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.logos:hover .slide-up,
+.logos:hover .slide-down {
+  animation-play-state: paused;
+}
+
+.slide-up {
+  display: inline-block;
+
+  animation: 25s slide-up infinite linear;
+}
+.slide-down {
+  display: inline-block;
+  animation: 25s slide-down infinite linear;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 export default function Footer() {
   const t = useTranslations("Index");
   return (
-    <footer className="flex flex-col items-center justify-center  text-black dark:text-white ">
+    <footer className="mx-auto max-w-7xl flex flex-col items-center justify-center  text-black dark:text-white ">
       <div className="max-container w-[90%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 px-5 py-10  border-b border-black dark:border-white">
         <div className="desc md:col-span-2">
           <Image alt="logo akita" src={"/images/akita.png"} width={150} height={100} />

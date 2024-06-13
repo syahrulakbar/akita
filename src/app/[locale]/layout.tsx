@@ -31,7 +31,7 @@ export default async function RootLayout({
 }>) {
   const messages = await getMessages();
   return (
-    <html lang={locale} className="scroll-smooth" style={{ scrollBehavior: "smooth" }}>
+    <html lang={locale} style={{ scrollBehavior: "smooth" }}>
       <body className={cn("min-h-screen bg-background font-sans antialiased", GeistSans.className)}>
         <ThemeProvider
           attribute="class"

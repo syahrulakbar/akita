@@ -1,6 +1,7 @@
 import About from "@/components/section/about";
+import Contact from "@/components/section/contact";
+import Gallery from "@/components/section/gallery";
 import Hero from "@/components/section/hero";
-import Marque from "@/components/section/marque";
 import Testimonial from "@/components/section/testimonial";
 
 export default function Home() {
@@ -9,6 +10,8 @@ export default function Home() {
       <Hero />
       <Testimonial />
       <About />
+      <Gallery />
+      <Contact />
     </>
   );
 }

@@ -26,10 +26,10 @@ export default function SwiperComponent() {
       >
         {CLIENTS.map((client, index) => (
           <SwiperSlide key={index}>
-            <div className="flex items-center justify-center p-10">
-              <div className="w-full lg:w-[70%] flex flex-col gap-10 dark:bg-black bg-white  drop-shadow-xl shadow-xl shadow-akita  rounded-2xl p-10">
+            <div className="flex items-center justify-center py-10 px-2  ">
+              <div className="w-full lg:w-[70%] flex flex-col gap-10 dark:bg-black bg-white shadow-xl shadow-akita   rounded-2xl p-10">
                 <div className="message">
-                  <p className="text-xl text-black dark:text-white ">{`"${client.message}"`}</p>
+                  <p className="text-lg lg:text-xl text-black dark:text-white  ">{`"${client.message}"`}</p>
                 </div>
                 <div className="flex flex-row items-center gap-5 border-t border-slate-300 py-5">
                   <Image
@@ -40,8 +40,10 @@ export default function SwiperComponent() {
                     className="rounded-full object-contain"
                   />
                   <div className="profile">
-                    <h5 className="text-akita font-semibold text-lg">{client.profile.name}</h5>
-                    <p className="font-light  text-black dark:text-white">
+                    <h5 className="text-akita font-semibold text-base lg:text-lg">
+                      {client.profile.name}
+                    </h5>
+                    <p className="font-light  text-black dark:text-white text-sm lg:text-base">
                       {client.profile.position}
                     </p>
                   </div>
