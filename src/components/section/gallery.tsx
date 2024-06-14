@@ -11,7 +11,7 @@ export default function Gallery() {
           <p className="text-sky-500 bg-sky-100 rounded-full inline-block px-5 py-1">Content</p>
         </div>
         <h2 className="font-bold text-4xl">{`Our Gallery`}</h2>
-        <p className="text-lg text-center">
+        <p className="text-center">
           Keseruan pengunjung di event Akita Japan Festival Vol 1 dan Vol 1.5
         </p>
       </div>

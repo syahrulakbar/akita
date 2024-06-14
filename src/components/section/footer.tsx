@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="w-[90%] pt-3 pb-10 flex flex-col gap-2 lg:flex-row items-center justify-between">
-        <p className="text-center ">
+        <p className="text-center text-sm md:text-base">
           &copy;
           {t("credit")}
         </p>

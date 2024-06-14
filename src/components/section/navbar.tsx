@@ -1,18 +1,17 @@
 "use client";
 
 import { NAVBAR } from "@/constant";
-import Image from "next/image";
 import Link from "next/link";
 import { ButtonDarkMode } from "../ui/button-darkmode";
-import { useMotionValueEvent, useScroll, motion } from "framer-motion";
+import { useMotionValueEvent, useScroll, motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { useTheme } from "next-themes";
+import MobileNav from "./mobile-nav";
+import { Sling as Hamburger } from "hamburger-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScroll, setIsScroll] = useState(false);
   const { scrollY } = useScroll();
-  const { theme } = useTheme();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest) {
@@ -47,8 +46,21 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <div>
+          <div className="flex items-center flex-row gap-2">
             <ButtonDarkMode />
+            <div
+              className={`z-20 rounded-full  dark:text-white text-black md:hidden font-light   ${
+                isOpen
+                  ? "text-white transition-all duration-200 ease-in-out"
+                  : " transition-all delay-300"
+              }`}
+            >
+              <Hamburger size={20} toggled={isOpen} toggle={setIsOpen} />
+            </div>
+          </div>
+
+          <div className="absolute right-0 top-0 z-0 w-full md:hidden">
+            <AnimatePresence mode="wait">{isOpen && <MobileNav />}</AnimatePresence>
           </div>
         </nav>
       </motion.nav>

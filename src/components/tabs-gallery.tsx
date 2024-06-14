@@ -12,8 +12,8 @@ export default function TabsGallery() {
         <TabsTrigger value="first">Akita Vol 1</TabsTrigger>
         <TabsTrigger value="second">Akita Vol 1.5</TabsTrigger>
       </TabsList>
-      <TabsContent value="first" className="w-full flex flex-col lg:flex-row gap-2 ">
-        <div className="logos w-full lg:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
+      <TabsContent value="first" className="w-full flex flex-col md:flex-row gap-2 ">
+        <div className="logos w-full md:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
           <div className="slide-up">
             <Image
               alt="gallery akita"
@@ -89,7 +89,7 @@ export default function TabsGallery() {
             />
           </div>
         </div>
-        <div className="logos w-full lg:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
+        <div className="logos w-full md:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
           <div className="slide-down">
             <Image
               alt="gallery akita"
@@ -165,7 +165,7 @@ export default function TabsGallery() {
             />
           </div>
         </div>
-        <div className="logos w-full lg:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
+        <div className="logos w-full  md:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
           <div className="slide-up">
             <Image
               alt="gallery akita"
@@ -242,8 +242,8 @@ export default function TabsGallery() {
           </div>
         </div>
       </TabsContent>
-      <TabsContent value="second" className="w-full flex flex-col lg:flex-row gap-2 ">
-        <div className="logos w-full lg:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
+      <TabsContent value="second" className="w-full flex flex-col md:flex-row gap-2 ">
+        <div className="logos w-full md:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
           <div className="slide-down">
             <Image
               alt="gallery akita"
@@ -319,7 +319,7 @@ export default function TabsGallery() {
             />
           </div>
         </div>
-        <div className="logos w-full lg:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
+        <div className="logos w-full md:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
           <div className="slide-up">
             <Image
               alt="gallery akita"
@@ -395,7 +395,7 @@ export default function TabsGallery() {
             />
           </div>
         </div>
-        <div className="logos w-full lg:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
+        <div className="logos w-full md:w-1/3 p-2 flex flex-col items-center h-screen bg-slate-100 dark:bg-slate-500">
           <div className="slide-down">
             <Image
               alt="gallery akita"
