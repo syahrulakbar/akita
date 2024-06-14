@@ -21,29 +21,29 @@ export const SOCIAL_MEDIA = [
   {
     icon: "Instagram",
     name: "@akitajapanfest",
-    href: "https://www.instagram.com",
+    href: "https://www.instagram.com/akitajapanfest/",
   },
   {
     icon: "Facebook",
     name: "Akita Japan Fest",
-    href: "https://www.instagram.com",
+    href: "https://www.facebook.com/profile.php?id=61553946205688",
   },
   {
     icon: "Music2",
     name: "Akita Japan Fest",
-    href: "https://www.tiktok.com",
+    href: "https://www.tiktok.com/@akitajapanfestival",
   },
 ];
 export const CONTACT = [
   {
     icon: "Phone",
-    name: "+62 812 3456 7890",
-    href: "https://www.instagram.com",
+    name: "+62 882-0053-59995",
+    href: "https://wa.me/62882005359995",
   },
   {
     icon: "Mail",
-    name: "akitajapanfestival@gmail.com",
-    href: "https://www.instagram.com",
+    name: "Mail Us",
+    href: "https://www.tiktok.com/@akitajapanfestival",
   },
 ];
 
