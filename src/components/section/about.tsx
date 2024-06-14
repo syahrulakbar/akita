@@ -1,30 +1,29 @@
 import { DATA } from "@/constant";
 import Icon from "@/lib/icon";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function About() {
+  const t = useTranslations("Index");
   return (
     <section
       id="about-us"
       className="mx-auto flex flex-col gap-3  min-h-screen max-w-7xl px-5 py-10  lg:p-20"
     >
-      <div className="lg:w-[50%] flex flex-col gap-3">
+      <div className=" flex flex-col gap-3">
         <div>
           <p className="text-sky-500 bg-sky-100 rounded-full inline-block px-5 py-1">
-            Introduction
+            {t("introduction")}
           </p>
         </div>
         <h2 className="font-bold text-4xl">
-          {`Who's`}
+          {t("who")}
           <span className="ml-2 bg-gradient-to-tr from-sky-500 to-cyan-300 bg-clip-text text-transparent">
             Akita
           </span>
           ?
         </h2>
-        <p>
-          Akita is an event management platform that makes a solution for event organisers to manage
-          events, venues, communities, collaborate, and find potential to learn together.
-        </p>
+        <p>{t("description")}</p>
       </div>
       <div className="flex flex-col lg:flex-row my-10">
         <div className="w-full lg:w-1/2 min-h-[50vh] grid grid-cols-2 p-0 lg:p-10 gap-2">

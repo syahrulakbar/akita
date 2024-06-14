@@ -24,13 +24,13 @@ export default function Navbar() {
     <>
       <motion.nav
         transition={{ duration: 0.35, ease: "easeInOut" }}
-        className={`padding-container fixed top-0 z-20  w-full pt-4 ${
+        className={`padding-container fixed top-0 z-20  w-full py-4   ${
           isScroll
-            ? "border-b border-input   bg-gradient-to-t from-transparent to-background  pb-3 backdrop-blur-3xl  transition-all duration-500 ease-in-out"
-            : ""
+            ? "border-b border-input  bg-gradient-to-t from-transparent to-background  pb-3 backdrop-blur-3xl  transition-all duration-500 ease-in-out"
+            : "bg-white dark:bg-black ease-in-out duration-300 "
         } `}
       >
-        <nav className="max-container flex flex-row w-full justify-between lg:justify-around items-center px-2">
+        <nav className="max-container flex flex-row w-full justify-between lg:justify-around items-center px-2 ">
           <Link href={"/"} className="uppercase font-bold text-xl">
             秋田県
           </Link>

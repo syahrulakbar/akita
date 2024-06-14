@@ -23,6 +23,8 @@
         "href": "/#blogs"
       }
     ],
+    "introduction": "Introduction",
+    "content": "Content",
     "company": "Company",
     "follow-us": "Follow Us",
     "contact-us": "Contact Us",
@@ -30,6 +32,9 @@
     "description": "Akita Japan Fest is a jejepangan event in Purwokerto. This event was held by Vandesu and Vetus. This event aims to introduce Japanese culture to the people of Purwokerto. This event will be filled with various events such as cosplay, live music, dance cover, and many more. So don't miss it!",
     "client": "Our Client",
     "desc-client": "Let’s Take a Look at Our Incredible Clients and Their Opinion About Us",
-    "whatsapp": "Contact Us For Question or Collaboration"
+    "whatsapp": "Contact Us For Question or Collaboration",
+    "gallery": "Our Gallery",
+    "desc-gallery": "The excitement of visitors at the Akita Japan Festival Vol 1 and Vol 1.5 events",
+    "who": "Who's"
   }
 }
