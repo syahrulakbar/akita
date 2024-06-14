@@ -13,7 +13,7 @@ const MobileNav = () => {
       animate="enter"
       exit="exit"
       initial="initial"
-      className=" float-end flex min-h-screen w-full flex-col justify-start items-start   gap-5 bg-akita p-5 pt-20"
+      className="w-[70%] float-end flex min-h-screen  flex-col justify-start items-start   gap-5 bg-akita p-5 pt-20"
     >
       <p className="w-full border-b-2 border-blue-100 text-[10px] font-bold uppercase leading-[20px] text-white ">
         navigasi
@@ -33,7 +33,9 @@ const MobileNav = () => {
           </Link>
         </motion.div>
       ))}
-      <SelectLanguage />
+      <div>
+        <SelectLanguage />
+      </div>
     </motion.div>
   );
 };

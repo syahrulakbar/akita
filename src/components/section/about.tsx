@@ -1,6 +1,5 @@
 import { DATA } from "@/constant";
 import Icon from "@/lib/icon";
-import { CalendarCheck } from "lucide-react";
 import Image from "next/image";
 
 export default function About() {
@@ -45,8 +44,17 @@ export default function About() {
             </div>
           ))}
         </div>
-        <div className="w-full lg:w-1/2 min-h-[50vh] flex items-center justify-center">
-          <Image alt="logo akita" src={"/images/akita.png"} width={250} height={100} />
+        <div className="w-full relative lg:w-1/2 min-h-[50vh] flex items-center justify-center ">
+          <div className="w-full h-full">
+            <Image alt="logo akita" src={"/images/akitul.png"} fill objectFit="contain" />
+          </div>
+          <Image
+            alt="pattern"
+            src={"/images/pattern/pattern-1.png"}
+            fill
+            className="absolute -z-10 object-cover dark:opacity-10 lg:rounded-lg  opacity-10"
+          />
+          <div className="bg-akita absolute w-full h-full -z-20 lg:rounded-lg"></div>
         </div>
       </div>
     </section>
