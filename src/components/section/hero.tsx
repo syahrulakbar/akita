@@ -11,9 +11,11 @@ export default function Hero() {
         fill
         className="object-cover grayscale"
       />
-      <h1 className="absolute font-extrabold text-4xl  whitespace-nowrap md:text-7xl lg:text-8xl xl:text-9xl uppercase text-white bg-black blur-sm md:blur-md hover:blur-none ease-in-out transition-all duration-500 cursor-pointer">
-        Akita Japan Fest
-      </h1>
+      <div className="absolute bg-white w-full lg:w-1/2 h-[150px] sm:h-[200px]  blur-sm md:blur-md hover:blur-none ease-in-out transition-all duration-500 cursor-pointe">
+        <div>
+          <Image alt="hero" src={"/images/senshi-1.png"} fill className="object-contain" />
+        </div>
+      </div>
     </div>
   );
 }

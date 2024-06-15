@@ -15,6 +15,10 @@ export const NAVBAR = [
     name: "Gallery",
     href: "#gallery",
   },
+  {
+    name: "Event",
+    href: "#event",
+  },
 ];
 
 export const SOCIAL_MEDIA = [
@@ -27,11 +31,6 @@ export const SOCIAL_MEDIA = [
     icon: "Facebook",
     name: "Akita Japan Fest",
     href: "https://www.facebook.com/profile.php?id=61553946205688",
-  },
-  {
-    icon: "Music2",
-    name: "Akita Japan Fest",
-    href: "https://www.tiktok.com/@akitajapanfestival",
   },
 ];
 export const CONTACT = [

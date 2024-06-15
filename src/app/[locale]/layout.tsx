@@ -10,7 +10,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
 export const metadata: Metadata = {
-  title: "Akita Japan Fest",
+  title: "Senshi Matsuri",
   description: "Let's make the best japanese festival in the world!",
   keywords:
     "event, agency, festival, japan, japanese, culture, food, music, dance, art, performance, entertainment, fun, family, friends, community, celebration, tradition, history",
