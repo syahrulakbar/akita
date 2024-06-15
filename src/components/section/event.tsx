@@ -62,7 +62,7 @@ export default function Event() {
         </div>
         <div className="flex flex-col lg:flex-row gap-2 items-center">
           <div className="w-full lg:w-1/2 flex flex-col gap-1 items-center justify-center">
-            <div className="relative text-sky-500 group hover:border-sky-500 border  rounded-md text-center  px-3 py-10">
+            <div className="relative  group hover:border-sky-500 border  rounded-md text-center  px-3 py-10">
               <div className="absolute -top-3 w-full">
                 <p className="  bg-sky-100 group-hover:bg-sky-500 group-hover:text-white text-sky-500 uppercase text-sm text-center transition-all ease-in-out duration-300 rounded-full  inline-block px-3 py-1">
                   Ticket
@@ -84,7 +84,7 @@ export default function Event() {
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <div className="w-full lg:w-1/2 flex flex-row gap-2 items-center justify-between border border-slate-200 hover:border-sky-500 hover:bg-sky-100 p-5 rounded-lg">
+          <div className="group w-full lg:w-1/2 flex flex-row gap-2 items-center justify-between border hover:border-sky-500  p-5 rounded-lg transition-all ease-in-out duration-300">
             <div className="flex flex-row gap-2 items-center">
               <Image
                 src={"/images/senshi.png"}
@@ -95,8 +95,11 @@ export default function Event() {
               />
               <div>
                 <h3 className="text-lg font-medium">{"Presale 1 (10 August)"}</h3>
-                <div className="flex flex-row items-center gap-2">
-                  <div className="w-[10px] h-[10px] bg-green-500 rounded-full animate-ping"></div>
+                <div className="relative flex flex-row items-center gap-2">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                  </span>
                   <p className="text-sm ">Available</p>
                 </div>
                 <p className=" text-sm font-light">The ticket purchase end in 23:12:00</p>
@@ -104,12 +107,16 @@ export default function Event() {
             </div>
             <div className="flex flex-col items-center gap-1">
               <p className="font-medium">Rp 30.000</p>
-              <Link href={"/ticket"} className="bg-sky-500 text-white     p-2 rounded-lg">
+              <Link
+                href={"/ticket"}
+                className="bg-sky-100 group-hover:bg-sky-500 group-hover:text-white text-sky-500 p-2 rounded-lg"
+              >
                 Buy Ticket
               </Link>
             </div>
           </div>
         </div>
+
         {COMPETITION.map((item, index) => (
           <div
             key={index}
@@ -129,7 +136,7 @@ export default function Event() {
                 <p className="  text-black dark:text-white font-semibold text-lg">{`Prize Total: ${item.prize}`}</p>
                 <Link
                   href={item.registration}
-                  className="border border-sky-500 rounded-md hover:dark:text-white hover:text-black p-2 my-2"
+                  className="border border-sky-500 group-hover:border-sky-100 rounded-md group-hover:bg-sky-500 group-hover:text-white   p-2 my-2"
                 >
                   Registration Here
                 </Link>
