@@ -1,9 +1,7 @@
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Event() {
-  const t = useTranslations("Index");
   const COMPETITION = [
     {
       name: "Coswalk Competition",
@@ -352,7 +350,7 @@ export default function Event() {
               <div className="relative w-full h-[300px]">
                 <Image
                   src={item.image}
-                  alt="logo"
+                  alt={`image-${item.name}`}
                   fill
                   objectFit="cover"
                   className="grayscale rounded-lg hover:grayscale-0 transition-all ease-in-out duration-300"

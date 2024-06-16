@@ -1,10 +1,8 @@
-import { useTranslations } from "next-intl";
 import React from "react";
 import Marque from "./marque";
 import SwiperComponent from "../ui/swiper";
 
 export default function Testimonial() {
-  const t = useTranslations("Index");
   return (
     <section
       id="testimonial"
@@ -13,8 +11,10 @@ export default function Testimonial() {
       <div>
         <p className="text-sky-500 bg-sky-100 rounded-full inline-block px-5 py-1">Testimonials</p>
       </div>
-      <h2 className="text-center font-bold text-4xl">{t("client")}</h2>
-      <p className="text-center">{t("desc-client")}</p>
+      <h2 className="text-center font-bold text-4xl">Our Client</h2>
+      <p className="text-center">
+        {`Let’s Take a Look at Our Incredible Clients and Their Opinion About Us`}
+      </p>
       <Marque />
       <SwiperComponent />
     </section>

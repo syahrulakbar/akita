@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { menuSlide, slide } from "@/constant/animation";
 import { NAVBAR } from "@/constant";
 import Link from "next/link";
-import { SelectLanguage } from "../ui/select-language";
 
 const MobileNav = () => {
   return (
@@ -33,9 +32,7 @@ const MobileNav = () => {
           </Link>
         </motion.div>
       ))}
-      <div>
-        <SelectLanguage />
-      </div>
+      <div></div>
     </motion.div>
   );
 };

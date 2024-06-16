@@ -1,23 +1,23 @@
 export const NAVBAR = [
   {
     name: "Home",
-    href: "#home",
+    href: "/#home",
   },
   {
     name: "Testimonial",
-    href: "#testimonial",
+    href: "/#testimonial",
   },
   {
     name: "About Us",
-    href: "#about-us",
+    href: "/#about-us",
   },
   {
     name: "Gallery",
-    href: "#gallery",
+    href: "/#gallery",
   },
   {
     name: "Event",
-    href: "#event",
+    href: "/#event",
   },
 ];
 

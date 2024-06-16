@@ -1,10 +1,8 @@
 import { DATA } from "@/constant";
 import Icon from "@/lib/icon";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function About() {
-  const t = useTranslations("Index");
   return (
     <section
       id="about-us"
@@ -13,17 +11,19 @@ export default function About() {
       <div className=" flex flex-col gap-3">
         <div>
           <p className="text-sky-500 bg-sky-100 rounded-full inline-block px-5 py-1">
-            {t("introduction")}
+            Introduction
           </p>
         </div>
         <h2 className="font-bold text-4xl">
-          {t("who")}
+          {"Who's"}
           <span className="ml-2 bg-gradient-to-tr from-sky-500 to-cyan-300 bg-clip-text text-transparent">
-            Akita
+            Senshi Matsuri
           </span>
           ?
         </h2>
-        <p>{t("description")}</p>
+        <p>
+          {`Akita Japan Fest is a jejepangan event in Purwokerto. This event was held by Vandesu and Vetus. This event aims to introduce Japanese culture to the people of Purwokerto. This event will be filled with various events such as cosplay, live music, dance cover, and many more. So don't miss it!`}
+        </p>
       </div>
       <div className="flex flex-col lg:flex-row my-10">
         <div className="w-full lg:w-1/2 min-h-[50vh] grid grid-cols-2 p-0 lg:p-10 gap-2">

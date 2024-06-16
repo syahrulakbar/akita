@@ -1,8 +1,6 @@
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function Hero() {
-  const t = useTranslations("Index");
   return (
     <div id="home" className="relative w-full h-screen flex flex-col justify-center items-center ">
       <Image
