@@ -18,6 +18,7 @@ import { toast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import Image from "next/image";
 import { ImagePlus } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 const MAX_FILE_SIZE = 1024 * 1024 * 3;
 const ACCEPTED_IMAGE_MIME_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
@@ -55,6 +56,8 @@ const FormSchema = z.object({
 });
 
 export function FormTicket() {
+  const searchParams = useSearchParams();
+  const ticketName = searchParams.get("ticketName");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -87,120 +90,128 @@ export function FormTicket() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full lg:w-2/3 space-y-6">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input placeholder="John Doe" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="johndoe@johndoe.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="whatsappNumber"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Whatsapp Number</FormLabel>
-              <FormControl>
-                <Input placeholder="08123456789" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="instagram"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Instagram</FormLabel>
-              <FormControl>
-                <Input placeholder="@senshimatsuri" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="totalTicket"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Total Ticket</FormLabel>
-              <FormControl>
-                <Input {...field} type="number" min={1} max={20} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="proofOfPayment"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Proof of Payment</FormLabel>
-              <div className="flex relative h-[300px] items-center justify-center border rounded-md">
-                {selectedImage ? (
-                  <Image
-                    alt={"image preview"}
-                    src={URL.createObjectURL(selectedImage)}
-                    fill
-                    objectFit="contain"
-                    className="rounded-md "
-                  />
-                ) : (
-                  <ImagePlus />
-                )}
+    <>
+      <div className="flex items-center justify-center flex-col">
+        <h2 className="font-bold text-3xl">Formulir Pembelian Ticket {ticketName}</h2>
+        <p className="text-sm font-light">
+          Pastikan teman-teman mengisi data diri dengan benar dan teliti
+        </p>
+      </div>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full lg:w-2/3 space-y-6">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input
-                    id="picture"
-                    type="file"
-                    placeholder="Upload Photo"
-                    accept="image/*"
-                    onBlur={field.onBlur}
-                    name={field.name}
-                    onChange={(e) => {
-                      field.onChange(e.target.files);
-                      if (e.target.files && e.target.files.length > 0) {
-                        setSelectedImage(e.target.files[0]);
-                      }
-                    }}
-                    ref={field.ref}
-                    className=" absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
-                  />
+                  <Input placeholder="John Doe" {...field} />
                 </FormControl>
-              </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="johndoe@johndoe.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="whatsappNumber"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Whatsapp Number</FormLabel>
+                <FormControl>
+                  <Input placeholder="08123456789" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="instagram"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Instagram</FormLabel>
+                <FormControl>
+                  <Input placeholder="@senshimatsuri" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="totalTicket"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Total Ticket</FormLabel>
+                <FormControl>
+                  <Input {...field} type="number" min={1} max={20} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit" className="w-full">
-          Submit
-        </Button>
-      </form>
-    </Form>
+          <FormField
+            control={form.control}
+            name="proofOfPayment"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Proof of Payment</FormLabel>
+                <div className="flex relative h-[300px] items-center justify-center border rounded-md">
+                  {selectedImage ? (
+                    <Image
+                      alt={"image preview"}
+                      src={URL.createObjectURL(selectedImage)}
+                      fill
+                      objectFit="contain"
+                      className="rounded-md "
+                    />
+                  ) : (
+                    <ImagePlus />
+                  )}
+                  <FormControl>
+                    <Input
+                      id="picture"
+                      type="file"
+                      placeholder="Upload Photo"
+                      accept="image/*"
+                      onBlur={field.onBlur}
+                      name={field.name}
+                      onChange={(e) => {
+                        field.onChange(e.target.files);
+                        if (e.target.files && e.target.files.length > 0) {
+                          setSelectedImage(e.target.files[0]);
+                        }
+                      }}
+                      ref={field.ref}
+                      className=" absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+                    />
+                  </FormControl>
+                </div>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit" className="w-full">
+            Submit
+          </Button>
+        </form>
+      </Form>
+    </>
   );
 }
