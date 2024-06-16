@@ -76,19 +76,26 @@ export function ModalAddEvent() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    await addEvent(data);
-    setOpen(false);
-    toast({
-      title: "Success Add New Event",
-      description: "Refresh the page to see the changes.",
-    });
-    form.reset({
-      event_name: "",
-      price: 5000,
-      start_date: new Date(),
-      end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
-    });
-    router.refresh();
+    try {
+      await addEvent(data);
+      setOpen(false);
+      toast({
+        title: "Success Add New Event",
+        description: "Refresh the page to see the changes.",
+      });
+      form.reset({
+        event_name: "",
+        price: 5000,
+        start_date: new Date(),
+        end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
+      });
+      router.refresh();
+    } catch (error) {
+      toast({
+        title: "Error Add New Event",
+        description: "Please try again.",
+      });
+    }
   }
   useEffect(() => {
     if (open) {

@@ -79,19 +79,26 @@ export function ModalUpdateEvent({ event }: { event: EventsTable }) {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    await updateEventById(id, data);
-    setOpen(false);
-    toast({
-      title: "Success Update Event",
-      description: "Refresh the page if not see the changes.",
-    });
-    form.reset({
-      event_name,
-      price,
-      start_date: moment(start_date).toDate(),
-      end_date: moment(end_date).toDate(),
-    });
-    router.refresh();
+    try {
+      await updateEventById(id, data);
+      setOpen(false);
+      toast({
+        title: "Success Update Event",
+        description: "Refresh the page if not see the changes.",
+      });
+      form.reset({
+        event_name,
+        price,
+        start_date: moment(start_date).toDate(),
+        end_date: moment(end_date).toDate(),
+      });
+      router.refresh();
+    } catch (error) {
+      toast({
+        title: "Error Update Event",
+        description: "Please try again.",
+      });
+    }
   }
 
   return (

@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export function AlertDialogDelete({ eventId }: { eventId: string }) {
+export function AlertDialogDelete({ id, name }: { id: string; name: string }) {
   const router = useRouter();
   const handleClick = async (id: string) => {
     await deleteEventById(id);
@@ -32,13 +32,13 @@ export function AlertDialogDelete({ eventId }: { eventId: string }) {
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your event and remove your
+            This action cannot be undone. This will permanently delete your {name} and remove your
             data from our servers.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={() => handleClick(eventId)}>Continue</AlertDialogAction>
+          <AlertDialogAction onClick={() => handleClick(id)}>Continue</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

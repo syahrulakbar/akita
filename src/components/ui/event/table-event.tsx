@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Input } from "../input";
 import { ModalAddEvent } from "./modal-add-event";
 import { AlertDialogDelete } from "../../alert-delete";
 import { EventsTable } from "@/lib/definitions";
@@ -47,7 +46,7 @@ export default function TableEvent({ events }: { events: EventsTable[] }) {
                 <TableCell>
                   <div className="flex flex-row items-center justify-center gap-3  ">
                     <ModalUpdateEvent event={event} />
-                    <AlertDialogDelete eventId={event.id} />
+                    <AlertDialogDelete id={event.id} name="event" />
                   </div>
                 </TableCell>
               </TableRow>

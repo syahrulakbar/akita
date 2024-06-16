@@ -7,10 +7,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Input } from "./ui/input";
 import { Pencil } from "lucide-react";
-import { Button } from "./ui/button";
-import { AlertDialogDelete } from "./alert-delete";
+import { Input } from "../input";
+import { Button } from "../button";
+import { AlertDialogDelete } from "@/components/alert-delete";
 
 export default function TableTicket() {
   return (
@@ -44,7 +44,7 @@ export default function TableTicket() {
                 <Button variant={"outline"}>
                   <Pencil size={16} />
                 </Button>
-                <AlertDialogDelete />
+                <AlertDialogDelete name="ticket" id="inv" />
               </div>
             </TableCell>
           </TableRow>
