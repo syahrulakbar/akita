@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/section/navbar";
 import ThemeProvider from "@/components/theme-provider";
-import Footer from "@/components/section/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { GeistSans } from "geist/font/sans";
 import { Toaster } from "@/components/ui/toaster";
@@ -37,9 +35,7 @@ export default async function RootLayout({
         >
           <Analytics />
           <link rel="icon" href="/icon.ico" sizes="16x16" />
-          <Navbar />
           {children}
-          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>
