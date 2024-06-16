@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto flex flex-col gap-3 items-center min-h-screen max-w-7xl px-5 py-10 lg:p-20 justify-center">
+    <div className="mx-auto flex flex-col gap-3 items-center min-h-screen max-w-7xl px-5 py-10 lg:p-20 justify-center text-center">
       <p className="text-4xl font-bold">404</p>
       <h2 className="uppercase">Page Not Found</h2>
       <p className="text-center text-sm">{`But if you don't change your direction, and if you keep looking, you may end up where you are heading.`}</p>

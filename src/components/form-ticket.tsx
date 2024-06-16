@@ -18,7 +18,7 @@ import { toast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import Image from "next/image";
 import { ImagePlus } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const MAX_FILE_SIZE = 1024 * 1024 * 3;
 const ACCEPTED_IMAGE_MIME_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
@@ -59,6 +59,7 @@ export function FormTicket() {
   const searchParams = useSearchParams();
   const ticketName = searchParams.get("ticketName");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -87,12 +88,16 @@ export function FormTicket() {
     });
 
     setSelectedImage(null);
+
+    router.push("/ticket/thanks");
   }
 
   return (
     <>
-      <div className="flex items-center justify-center flex-col">
-        <h2 className="font-bold text-3xl">Formulir Pembelian Ticket {ticketName}</h2>
+      <div className="flex items-center justify-center flex-col text-center">
+        <h2 className="font-bold text-xl  md:text-2xl lg:text-3xl">
+          Formulir Pembelian {ticketName}
+        </h2>
         <p className="text-sm font-light">
           Pastikan teman-teman mengisi data diri dengan benar dan teliti
         </p>
