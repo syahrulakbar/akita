@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -29,59 +30,78 @@ import { useRouter } from "next/navigation";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import { addEvent } from "@/actions/event";
 
 const FormSchema = z
   .object({
-    eventName: z
+    event_name: z
       .string({
         message: "Event Name is required",
       })
       .min(3, "Event Name must be at least 3 characters"),
-    price: z
+    price: z.coerce
       .number({
-        message: "Price is required",
+        required_error: "Price is required",
+        invalid_type_error: "Price must be a number",
       })
+      .int()
+      .positive()
       .min(5000, "Price must be greater than 5000")
       .max(100000, "Price must be less than 100000"),
-    startDate: z.date({
+    start_date: z.date({
       required_error: "Start Date is required.",
     }),
-    endDate: z.date({
+    end_date: z.date({
       required_error: "Start Date is required.",
     }),
   })
-  .refine((data) => data.endDate >= data.startDate, {
+  .refine((data) => data.end_date >= data.start_date, {
     message: "End Date cannot be less than Start Date",
-    path: ["endDate"],
+    path: ["end_date"],
   });
 
 export function ModalAddEvent() {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      eventName: "",
+      event_name: "",
       price: 5000,
-      startDate: new Date(),
-      endDate: new Date(new Date().setDate(new Date().getDate() + 1)),
+      start_date: new Date(),
+      end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    await addEvent(data);
+    setOpen(false);
     toast({
       title: "Success Add New Event",
       description: "Refresh the page to see the changes.",
     });
     form.reset({
-      eventName: "",
+      event_name: "",
       price: 5000,
-      startDate: new Date(),
-      endDate: new Date(new Date().setDate(new Date().getDate() + 1)),
+      start_date: new Date(),
+      end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
     });
+    router.refresh();
   }
+  useEffect(() => {
+    if (open) {
+      form.reset({
+        event_name: "",
+        price: 5000,
+        start_date: new Date(),
+        end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
+      });
+    }
+  }, [open, form]);
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="w-full lg:w-max flex flex-row items-center gap-2">
           <Plus size={16} />
@@ -98,7 +118,7 @@ export function ModalAddEvent() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
             <FormField
               control={form.control}
-              name="eventName"
+              name="event_name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Event Name</FormLabel>
@@ -124,7 +144,7 @@ export function ModalAddEvent() {
             />
             <FormField
               control={form.control}
-              name="startDate"
+              name="start_date"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>Start Date</FormLabel>
@@ -161,7 +181,7 @@ export function ModalAddEvent() {
             />
             <FormField
               control={form.control}
-              name="endDate"
+              name="end_date"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>End Date</FormLabel>

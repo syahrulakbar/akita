@@ -1,4 +1,4 @@
-import { FormTicket } from "@/components/form-ticket";
+import { FormTicket } from "@/components/ui/ticket/form-ticket";
 
 export default function Page({ params }: { params: { ticketId: string } }) {
   return (

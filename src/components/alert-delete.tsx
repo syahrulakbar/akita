@@ -1,3 +1,5 @@
+"use client";
+import { deleteEventById } from "@/actions/event";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,8 +13,14 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-export function AlertDialogDelete() {
+export function AlertDialogDelete({ eventId }: { eventId: string }) {
+  const router = useRouter();
+  const handleClick = async (id: string) => {
+    await deleteEventById(id);
+    router.refresh();
+  };
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -30,7 +38,7 @@ export function AlertDialogDelete() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <AlertDialogAction onClick={() => handleClick(eventId)}>Continue</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
