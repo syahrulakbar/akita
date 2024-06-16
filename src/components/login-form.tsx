@@ -14,8 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
-import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const FormSchema = z.object({
   email: z
@@ -31,9 +30,6 @@ const FormSchema = z.object({
 });
 
 export default function LoginForm() {
-  const searchParams = useSearchParams();
-  const ticketName = searchParams.get("ticketName");
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -54,8 +50,6 @@ export default function LoginForm() {
       password: "",
     });
 
-    setSelectedImage(null);
-
     router.push("/ticket/thanks");
   }
 
@@ -70,9 +64,9 @@ export default function LoginForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} />
+                    <Input placeholder="John Doe" type="email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -83,9 +77,9 @@ export default function LoginForm() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>password</FormLabel>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="johndoe@johndoe.com" type="password" {...field} />
+                    <Input placeholder="*******" type="password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -8,7 +8,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Input } from "./ui/input";
-import { Pencil, Plus, Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
+import { ModalAddEvent } from "./modal-add-event";
+import { AlertDialogDelete } from "./alert-delete";
 import { Button } from "./ui/button";
 
 export default function TableEvent() {
@@ -16,10 +18,7 @@ export default function TableEvent() {
     <div className="flex flex-col gap-2">
       <div className="flex flex-col gap-2 lg:flex-row items-center justify-between">
         <Input className="w-full lg:w-1/3" placeholder="Search by event name" />
-        <Button className="w-full lg:w-max flex flex-row items-center gap-2">
-          <Plus size={16} />
-          Add New Event
-        </Button>
+        <ModalAddEvent />
       </div>
       <Table>
         <TableCaption>A list of your recent events</TableCaption>
@@ -41,13 +40,11 @@ export default function TableEvent() {
             <TableCell>10 August</TableCell>
             <TableCell>12 August</TableCell>
             <TableCell>
-              <div className="flex flex-row items-center justify-between border rounded-md px-2 py-1">
-                <button>
+              <div className="flex flex-row items-center justify-center gap-3  ">
+                <Button variant={"outline"}>
                   <Pencil size={16} />
-                </button>
-                <button className="text-red-500">
-                  <Trash2 size={16} />
-                </button>
+                </Button>
+                <AlertDialogDelete />
               </div>
             </TableCell>
           </TableRow>

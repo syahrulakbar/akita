@@ -8,7 +8,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Input } from "./ui/input";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
+import { Button } from "./ui/button";
+import { AlertDialogDelete } from "./alert-delete";
 
 export default function TableTicket() {
   return (
@@ -38,13 +40,11 @@ export default function TableTicket() {
             <TableCell>081548962893</TableCell>
             <TableCell>Success</TableCell>
             <TableCell>
-              <div className="flex flex-row items-center justify-between border rounded-md px-2 py-1">
-                <button>
+              <div className="flex flex-row items-center justify-center gap-3  ">
+                <Button variant={"outline"}>
                   <Pencil size={16} />
-                </button>
-                <button className="text-red-500">
-                  <Trash2 size={16} />
-                </button>
+                </Button>
+                <AlertDialogDelete />
               </div>
             </TableCell>
           </TableRow>
