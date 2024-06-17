@@ -46,6 +46,7 @@ export default function LoginForm() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       await signIn(data);
+      router.push("/dashboard");
       toast({
         title: "Success Login",
         description: "You have successfully logged in.",
@@ -54,8 +55,6 @@ export default function LoginForm() {
         email: "",
         password: "",
       });
-
-      router.push("/dashboard");
     } catch (error) {
       toast({
         title: "Error",
