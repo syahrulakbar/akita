@@ -1,13 +1,21 @@
 "use client";
+
 import useCountdownTimer from "@/hooks/useCountdownTimer";
 import { EventsTable } from "@/lib/definitions";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+interface TimeLeftProps {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
 export default function Ticket({ event }: { event: EventsTable }) {
   const { id, event_name, price, end_date } = event;
-  const { timeLeft } = useCountdownTimer(end_date);
+  const { timeLeft }: { timeLeft: TimeLeftProps } = useCountdownTimer(end_date);
   const { days, hours, minutes, seconds } = timeLeft;
   return (
     <div className="rounded-2xl overflow-hidden">
@@ -51,11 +59,7 @@ export default function Ticket({ event }: { event: EventsTable }) {
                 <span>The ticket purchase ends in</span>&nbsp;
                 <div className="inline">
                   <span>
-                    &nbsp;<span style={{ display: "none" }}>0</span>
-                    {days}:<span style={{ display: "none" }}>0</span>
-                    {hours}:<span style={{ display: "none" }}>0</span>
-                    {minutes}:<span style={{ display: "none" }}>0</span>
-                    {seconds}
+                    {days}d {hours}h {minutes}m {seconds}s
                   </span>
                 </div>
               </span>

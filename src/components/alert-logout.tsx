@@ -15,7 +15,7 @@ export function AlertDialogLogout() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <button className="flex h-[48px] w-full grow items-center text-black dark:text-white   justify-center gap-2 rounded-md border p-3 text-sm font-medium   hover:text-sky-500  hover:dark:text-sky-500 md:flex-none md:justify-start md:p-2 md:px-3">
+        <button className="flex h-[48px] md:w-full w-max grow items-center text-black dark:text-white   justify-center gap-2 rounded-md border p-3 text-sm font-medium   hover:text-sky-500  hover:dark:text-sky-500 md:flex-none md:justify-start md:p-2 md:px-3">
           <PowerIcon className="w-6" />
           <div className="hidden md:block">Sign Out</div>
         </button>

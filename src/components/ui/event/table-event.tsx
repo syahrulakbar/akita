@@ -1,3 +1,4 @@
+"use client";
 import {
   Table,
   TableBody,
@@ -13,8 +14,27 @@ import { EventsTable } from "@/lib/definitions";
 import moment from "moment";
 import { ModalUpdateEvent } from "./modal-update-event";
 import Search from "../../search";
+import { deleteEventById } from "@/actions/event";
+import { useRouter } from "next/navigation";
+import { toast } from "../use-toast";
 
 export default function TableEvent({ events }: { events: EventsTable[] }) {
+  const router = useRouter();
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteEventById(id);
+      toast({
+        title: "Success Delete Event",
+        description: "Refresh the page to see the changes.",
+      });
+      router.refresh();
+    } catch (error) {
+      toast({
+        title: "Error Delete Event",
+        description: "Please try again.",
+      });
+    }
+  };
   return (
     <div className="flex flex-col gap-2">
       <div className="flex flex-col gap-2 lg:flex-row items-center justify-between">
@@ -46,7 +66,7 @@ export default function TableEvent({ events }: { events: EventsTable[] }) {
                 <TableCell>
                   <div className="flex flex-row items-center justify-center gap-3  ">
                     <ModalUpdateEvent event={event} />
-                    <AlertDialogDelete id={event.id} name="event" />
+                    <AlertDialogDelete name="event" handleDelete={() => handleDelete(event.id)} />
                   </div>
                 </TableCell>
               </TableRow>

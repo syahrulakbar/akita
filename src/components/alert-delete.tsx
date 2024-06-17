@@ -15,12 +15,15 @@ import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export function AlertDialogDelete({ id, name }: { id: string; name: string }) {
+export function AlertDialogDelete({
+  name,
+  handleDelete,
+}: {
+  name: string;
+  handleDelete: () => void;
+}) {
   const router = useRouter();
-  const handleClick = async (id: string) => {
-    await deleteEventById(id);
-    router.refresh();
-  };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -38,7 +41,7 @@ export function AlertDialogDelete({ id, name }: { id: string; name: string }) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={() => handleClick(id)}>Continue</AlertDialogAction>
+          <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

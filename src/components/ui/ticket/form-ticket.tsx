@@ -19,6 +19,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { ImagePlus } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { addTicket } from "@/actions/ticket";
 
 const MAX_FILE_SIZE = 1024 * 1024 * 3;
 const ACCEPTED_IMAGE_MIME_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
@@ -30,13 +31,8 @@ const FormSchema = z.object({
   email: z.string().email({
     message: "Email must be a valid email address.",
   }),
-  whatsappNumber: z.string().min(2, {
-    message: "Whatsapp Number must be at least 2 characters.",
-  }),
-  instagram: z.string().min(2, {
-    message: "Instagram must be at least 2 characters.",
-  }),
-  totalTicket: z.coerce
+
+  total_ticket: z.coerce
     .number({
       required_error: "Total ticket is required",
       invalid_type_error: "Total ticket must be a number",
@@ -44,21 +40,19 @@ const FormSchema = z.object({
     .int()
     .positive()
     .min(1, { message: "Total ticket should be at least 1" }),
-  proofOfPayment: z
-    .any()
-    .refine((files) => {
-      return files?.[0]?.size <= MAX_FILE_SIZE;
-    }, `Max image size is 5MB.`)
+  proof_of_payment: z
+    .instanceof(File)
+    .refine((file) => file.size <= MAX_FILE_SIZE, "File size should be less than 3MB")
     .refine(
-      (files) => ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
+      (files) => ACCEPTED_IMAGE_MIME_TYPES.includes(files.type),
       "Only .jpg, .jpeg, .png and .webp formats are supported.",
     ),
 });
 
-export function FormTicket() {
+export function FormTicket({ eventId }: { eventId: string }) {
   const searchParams = useSearchParams();
   const ticketName = searchParams.get("ticketName");
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [selectedImage, setSelectedImage] = useState<File | undefined>(undefined);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -66,30 +60,34 @@ export function FormTicket() {
     defaultValues: {
       name: "",
       email: "",
-      whatsappNumber: "",
-      instagram: "",
-      totalTicket: 1,
-      proofOfPayment: "",
+      total_ticket: 1,
+      proof_of_payment: selectedImage,
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "Congratulation! Your ticket has been submitted!",
-      description: "We will contact you soon",
-    });
-    form.reset({
-      name: "",
-      email: "",
-      whatsappNumber: "",
-      instagram: "",
-      totalTicket: 1,
-      proofOfPayment: "",
-    });
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    try {
+      await addTicket({ ...data, eventId });
+      toast({
+        title: "Congratulation! Your ticket has been submitted!",
+        description: "We will contact you soon",
+      });
+      form.reset({
+        name: "",
+        email: "",
+        total_ticket: 1,
+        proof_of_payment: selectedImage,
+      });
 
-    setSelectedImage(null);
+      setSelectedImage(undefined);
 
-    router.push("/ticket/thanks");
+      router.push("/ticket/thanks");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong, please try again later.",
+      });
+    }
   }
 
   return (
@@ -130,35 +128,10 @@ export function FormTicket() {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
-            name="whatsappNumber"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Whatsapp Number</FormLabel>
-                <FormControl>
-                  <Input placeholder="08123456789" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="instagram"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Instagram</FormLabel>
-                <FormControl>
-                  <Input placeholder="@senshimatsuri" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="totalTicket"
+            name="total_ticket"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Total Ticket</FormLabel>
@@ -172,7 +145,7 @@ export function FormTicket() {
 
           <FormField
             control={form.control}
-            name="proofOfPayment"
+            name="proof_of_payment"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Proof of Payment</FormLabel>

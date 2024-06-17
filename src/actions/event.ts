@@ -1,7 +1,7 @@
 import { Event } from "@/lib/definitions";
 import axios from "axios";
 
-const API_SERVER = process.env.API_SERVER;
+const API_SERVER = process.env.NEXT_PUBLIC_API_SERVER;
 
 export async function getAllEvents(query: string) {
   try {
@@ -12,7 +12,6 @@ export async function getAllEvents(query: string) {
     return data;
   } catch (error) {
     console.error(error);
-    throw error;
   }
 }
 export async function addEvent(event: Event) {
@@ -22,7 +21,6 @@ export async function addEvent(event: Event) {
     return data;
   } catch (error) {
     console.error(error);
-    throw error;
   }
 }
 export async function deleteEventById(eventId: string) {
@@ -32,7 +30,6 @@ export async function deleteEventById(eventId: string) {
     return data;
   } catch (error) {
     console.error(error);
-    throw error;
   }
 }
 export async function updateEventById(eventId: string, event: Event) {
@@ -42,6 +39,5 @@ export async function updateEventById(eventId: string, event: Event) {
     return data;
   } catch (error) {
     console.error(error);
-    throw error;
   }
 }

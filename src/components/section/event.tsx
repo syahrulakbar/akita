@@ -95,9 +95,11 @@ export default async function Event({
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-8 lg:mt-10">
-          {events &&
-            events.length > 0 &&
-            events.map((item: EventsTable, index: number) => <Ticket key={index} event={item} />)}
+          {events?.data &&
+            events?.data.length > 0 &&
+            events?.data.map((item: EventsTable, index: number) => (
+              <Ticket key={index} event={item} />
+            ))}
         </div>
 
         {COMPETITION.map((item, index) => (

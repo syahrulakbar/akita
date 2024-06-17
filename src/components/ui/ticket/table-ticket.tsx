@@ -1,3 +1,4 @@
+"use client";
 import {
   Table,
   TableBody,
@@ -7,23 +8,43 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Pencil } from "lucide-react";
-import { Input } from "../input";
-import { Button } from "../button";
 import { AlertDialogDelete } from "@/components/alert-delete";
+import { TicketsTable } from "@/lib/definitions";
+import { toast } from "../use-toast";
+import { useRouter } from "next/navigation";
+import { deleteTicketById } from "@/actions/ticket";
+import { ModalUpdateTicket } from "./modal-update-ticket";
+import Search from "@/components/search";
+import { DialogViewTicket } from "./dialog-view-ticket";
 
-export default function TableTicket() {
+export default function TableTicket({ ticket }: { ticket: TicketsTable[] }) {
+  const router = useRouter();
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteTicketById(id);
+      toast({
+        title: "Success Delete Ticket",
+        description: "Refresh the page to see the changes.",
+      });
+      router.refresh();
+    } catch (error) {
+      toast({
+        title: "Error Delete Event",
+        description: "Please try again.",
+      });
+    }
+  };
   return (
     <div className="flex flex-col gap-2">
-      <Input className="w-full lg:w-1/3" placeholder="Search by name, email" />
+      <Search placeholder="Search by name" />
       <Table>
         <TableCaption>A list of your recent tickets</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Ticket ID</TableHead>
+            <TableHead>Ticket ID</TableHead>
+            <TableHead>Token</TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
-            <TableHead>Whatsapp</TableHead>
             <TableHead>Total Ticket</TableHead>
             <TableHead>Proof of Payment</TableHead>
             <TableHead>Status</TableHead>
@@ -31,23 +52,31 @@ export default function TableTicket() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="font-medium">INV001</TableCell>
-            <TableCell>07tav2akbar@gmail.com</TableCell>
-            <TableCell>Mochamad Syahrul Akbar</TableCell>
-            <TableCell>081548962893</TableCell>
-            <TableCell>3</TableCell>
-            <TableCell>081548962893</TableCell>
-            <TableCell>Success</TableCell>
-            <TableCell>
-              <div className="flex flex-row items-center justify-center gap-3  ">
-                <Button variant={"outline"}>
-                  <Pencil size={16} />
-                </Button>
-                <AlertDialogDelete name="ticket" id="inv" />
-              </div>
-            </TableCell>
-          </TableRow>
+          {ticket &&
+            ticket.length > 0 &&
+            ticket.map((ticket, index) => {
+              const { id, name, email, total_ticket, proof_of_payment, status } = ticket;
+
+              return (
+                <TableRow key={index}>
+                  <TableCell className="font-medium">{id}</TableCell>
+                  <TableCell className="font-medium">121212</TableCell>
+                  <TableCell>{name}</TableCell>
+                  <TableCell>{email}</TableCell>
+                  <TableCell>{total_ticket}</TableCell>
+                  <TableCell>
+                    <DialogViewTicket imageUrl={proof_of_payment} />
+                  </TableCell>
+                  <TableCell className="capitalize">{status}</TableCell>
+                  <TableCell>
+                    <div className="flex flex-row items-center justify-center gap-3  ">
+                      <ModalUpdateTicket ticket={ticket} />
+                      <AlertDialogDelete name="ticket" handleDelete={() => handleDelete(id)} />
+                    </div>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
         </TableBody>
       </Table>
     </div>
