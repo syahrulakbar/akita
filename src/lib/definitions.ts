@@ -28,5 +28,6 @@ export type TicketsTable = {
   proof_of_payment: string;
   status: string;
   total_ticket: number;
+  token: string;
   eventId: string;
 };

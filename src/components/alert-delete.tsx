@@ -1,5 +1,4 @@
 "use client";
-import { deleteEventById } from "@/actions/event";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,8 +21,6 @@ export function AlertDialogDelete({
   name: string;
   handleDelete: () => void;
 }) {
-  const router = useRouter();
-
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>

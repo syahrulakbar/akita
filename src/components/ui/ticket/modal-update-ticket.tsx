@@ -106,8 +106,8 @@ export function ModalUpdateTicket({ ticket }: { ticket: TicketsTable }) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]   overflow-y-scroll max-h-full md:max-w-screen-lg p-5 lg:p-10">
         <DialogHeader>
-          <DialogTitle>Add New Event</DialogTitle>
-          <DialogDescription>{`Add new event here. Click save when you're done.`}</DialogDescription>
+          <DialogTitle>Update Ticket</DialogTitle>
+          <DialogDescription>{`Update ticket here. Click save when you're done.`}</DialogDescription>
         </DialogHeader>
 
         <Form {...form}>

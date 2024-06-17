@@ -55,12 +55,12 @@ export default function TableTicket({ ticket }: { ticket: TicketsTable[] }) {
           {ticket &&
             ticket.length > 0 &&
             ticket.map((ticket, index) => {
-              const { id, name, email, total_ticket, proof_of_payment, status } = ticket;
+              const { id, name, token, email, total_ticket, proof_of_payment, status } = ticket;
 
               return (
                 <TableRow key={index}>
                   <TableCell className="font-medium">{id}</TableCell>
-                  <TableCell className="font-medium">121212</TableCell>
+                  <TableCell className="font-medium">{token ? token : "-"}</TableCell>
                   <TableCell>{name}</TableCell>
                   <TableCell>{email}</TableCell>
                   <TableCell>{total_ticket}</TableCell>

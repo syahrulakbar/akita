@@ -36,7 +36,7 @@ export async function getTicketById(ticketId: string) {
 
 export async function getAllTickets(query: string) {
   try {
-    const response = await fetch(`${API_SERVER}/api/ticket?name=${query}`, {
+    const response = await fetch(`${API_SERVER}/api/ticket?name=${query}&token=${query}`, {
       cache: "no-store",
     });
     const data = response.json();

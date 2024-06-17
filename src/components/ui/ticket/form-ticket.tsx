@@ -72,6 +72,7 @@ export function FormTicket({ eventId }: { eventId: string }) {
         title: "Congratulation! Your ticket has been submitted!",
         description: "We will contact you soon",
       });
+      router.push("/ticket/thanks");
       form.reset({
         name: "",
         email: "",
@@ -80,8 +81,6 @@ export function FormTicket({ eventId }: { eventId: string }) {
       });
 
       setSelectedImage(undefined);
-
-      router.push("/ticket/thanks");
     } catch (error) {
       toast({
         title: "Error",
@@ -170,8 +169,8 @@ export function FormTicket({ eventId }: { eventId: string }) {
                       onBlur={field.onBlur}
                       name={field.name}
                       onChange={(e) => {
-                        field.onChange(e.target.files);
                         if (e.target.files && e.target.files.length > 0) {
+                          field.onChange(e.target.files[0]);
                           setSelectedImage(e.target.files[0]);
                         }
                       }}
