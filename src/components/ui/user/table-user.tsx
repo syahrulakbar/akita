@@ -9,69 +9,65 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AlertDialogDelete } from "@/components/alert-delete";
-import { TicketsTable } from "@/lib/definitions";
 import { toast } from "../use-toast";
 import { useRouter } from "next/navigation";
 import { deleteTicketById } from "@/actions/ticket";
-import { ModalUpdateTicket } from "./modal-update-ticket";
 import Search from "@/components/search";
-import { DialogViewTicket } from "./dialog-view-ticket";
+import { ModalAddUser } from "./modal-add-user";
+import { UsersTable } from "@/lib/definitions";
+import { ModalUpdateUser } from "./modal-update-user";
+import { deleteUserById } from "@/actions/user";
 
-export default function TableTicket({ ticket }: { ticket: TicketsTable[] }) {
+export default function TableUser({ users }: { users: UsersTable[] }) {
   const router = useRouter();
   const handleDelete = async (id: string) => {
     try {
-      await deleteTicketById(id);
+      await deleteUserById(id);
       toast({
-        title: "Success Delete Ticket",
+        title: "Success Delete User",
         description: "Refresh the page to see the changes.",
       });
       router.refresh();
     } catch (error) {
       toast({
-        title: "Error Delete Event",
+        title: "Error Delete User",
         description: "Please try again.",
       });
     }
   };
   return (
     <div className="flex flex-col gap-2">
-      <Search placeholder="Search by name, token" />
+      <div className="flex flex-col gap-2 lg:flex-row items-center justify-between">
+        <Search placeholder={"Search by name, email"} />
+        <ModalAddUser />
+      </div>
       <Table>
-        <TableCaption>A list of your recent tickets</TableCaption>
+        <TableCaption>A list of your recent users</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Ticket ID</TableHead>
-            <TableHead>Token</TableHead>
+            <TableHead>User Id</TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
-            <TableHead>Total Ticket</TableHead>
-            <TableHead>Proof of Payment</TableHead>
-            <TableHead>Status</TableHead>
+            <TableHead>Role</TableHead>
             <TableHead className="text-center">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {ticket &&
-            ticket.length > 0 &&
-            ticket.map((ticket, index) => {
-              const { id, name, token, email, total_ticket, proof_of_payment, status } = ticket;
+          {users &&
+            users.length > 0 &&
+            users.map((user, index) => {
+              const { id, name, email, role } = user;
 
               return (
                 <TableRow key={index}>
                   <TableCell className="font-medium">{id}</TableCell>
-                  <TableCell className="font-medium">{token ? token : "-"}</TableCell>
                   <TableCell>{name}</TableCell>
                   <TableCell>{email}</TableCell>
-                  <TableCell>{total_ticket}</TableCell>
-                  <TableCell>
-                    <DialogViewTicket imageUrl={proof_of_payment} />
-                  </TableCell>
-                  <TableCell className="capitalize">{status}</TableCell>
+                  <TableCell className="capitalize">{role.role}</TableCell>
                   <TableCell>
                     <div className="flex flex-row items-center justify-center gap-3  ">
-                      <ModalUpdateTicket ticket={ticket} />
-                      <AlertDialogDelete name="ticket" handleDelete={() => handleDelete(id)} />
+                      <ModalUpdateUser user={user} />
+                      <AlertDialogDelete name="user" handleDelete={() => handleDelete(id)} />
                     </div>
                   </TableCell>
                 </TableRow>

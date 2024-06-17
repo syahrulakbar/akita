@@ -31,3 +31,21 @@ export type TicketsTable = {
   token: string;
   eventId: string;
 };
+
+export type Role = {
+  role: string;
+};
+export type UsersTable = {
+  id: string;
+  name: string;
+  email: string;
+  roleId: number;
+  role: Role;
+};
+export type Users = {
+  id?: string;
+  name: string;
+  email: string;
+  password?: string;
+  roleId: string;
+};
