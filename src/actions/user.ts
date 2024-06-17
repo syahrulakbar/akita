@@ -1,4 +1,4 @@
-import { Users, UsersTable } from "@/lib/definitions";
+import { LoginData, Users } from "@/lib/definitions";
 import axios from "axios";
 
 const API_SERVER = process.env.NEXT_PUBLIC_API_SERVER;
@@ -6,9 +6,11 @@ const API_SERVER = process.env.NEXT_PUBLIC_API_SERVER;
 export async function getAllUsers(query: string) {
   try {
     const response = await fetch(`${API_SERVER}/api/users?name=${query}&email=${query}`, {
-      cache: "no-store",
+      credentials: "include",
+      cache: "no-cache",
     });
-    const data = response.json();
+
+    const data = await response.json();
     return data;
   } catch (error) {
     console.error(error);
@@ -21,6 +23,7 @@ export async function addUser(user: Users) {
     return data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 }
 export async function deleteUserById(userId: string) {
@@ -30,6 +33,7 @@ export async function deleteUserById(userId: string) {
     return data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 }
 export async function updateUserById(userId: string, user: Users) {
@@ -39,5 +43,40 @@ export async function updateUserById(userId: string, user: Users) {
     return data;
   } catch (error) {
     console.error(error);
+    throw error;
+  }
+}
+
+export async function signIn(loginData: LoginData) {
+  try {
+    const response = await axios.post(`${API_SERVER}/api/login`, loginData, {
+      withCredentials: true,
+    });
+    const { data } = response.data;
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+export async function signOut() {
+  try {
+    const response = await axios.delete(`${API_SERVER}/api/logout`, { withCredentials: true });
+    const { data } = response.data;
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export async function checkUser() {
+  try {
+    const response = await axios.get(`${API_SERVER}/api/users/admin`, { withCredentials: true });
+    const { data } = response.data;
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 }

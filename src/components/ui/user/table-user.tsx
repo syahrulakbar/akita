@@ -11,7 +11,6 @@ import {
 import { AlertDialogDelete } from "@/components/alert-delete";
 import { toast } from "../use-toast";
 import { useRouter } from "next/navigation";
-import { deleteTicketById } from "@/actions/ticket";
 import Search from "@/components/search";
 import { ModalAddUser } from "./modal-add-user";
 import { UsersTable } from "@/lib/definitions";

@@ -49,3 +49,7 @@ export type Users = {
   password?: string;
   roleId: string;
 };
+export type LoginData = {
+  email: string;
+  password: string;
+};

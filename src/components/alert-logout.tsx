@@ -1,3 +1,4 @@
+"use client";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,8 +11,27 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { PowerIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
+import { toast } from "./ui/use-toast";
+import { signOut } from "@/actions/user";
 
 export function AlertDialogLogout() {
+  const router = useRouter();
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      router.push("/login");
+      toast({
+        title: "Logout",
+        description: "You have successfully logged out.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to logout.",
+      });
+    }
+  };
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -29,7 +49,7 @@ export function AlertDialogLogout() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Logout</AlertDialogAction>
+          <AlertDialogAction onClick={handleLogout}>Logout</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

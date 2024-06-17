@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { signIn } from "@/actions/user";
 
 const FormSchema = z.object({
   email: z
@@ -24,9 +25,11 @@ const FormSchema = z.object({
     .email({
       message: "Email must be a valid email address.",
     }),
-  password: z.string({
-    message: "Password is required",
-  }),
+  password: z
+    .string({
+      message: "Password is required",
+    })
+    .min(6, "Password must be at least 6 characters"),
 });
 
 export default function LoginForm() {
@@ -40,17 +43,25 @@ export default function LoginForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "Congratulation! Your ticket has been submitted!",
-      description: "We will contact you soon",
-    });
-    form.reset({
-      email: "",
-      password: "",
-    });
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    try {
+      await signIn(data);
+      toast({
+        title: "Success Login",
+        description: "You have successfully logged in.",
+      });
+      form.reset({
+        email: "",
+        password: "",
+      });
 
-    router.push("/ticket/thanks");
+      router.push("/dashboard");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Please try again later.",
+      });
+    }
   }
 
   return (
