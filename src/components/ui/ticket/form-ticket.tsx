@@ -23,6 +23,7 @@ import { addTicket } from "@/actions/ticket";
 import { DialogFooter } from "../dialog";
 import NotFoundEvent from "../event/not-found-event";
 import { checkEventStatusById } from "@/actions/event";
+import { FormTicketSkeleton } from "@/components/skeletons";
 
 const MAX_FILE_SIZE = 1024 * 1024 * 3;
 const ACCEPTED_IMAGE_MIME_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
@@ -53,6 +54,8 @@ const FormSchema = z.object({
 });
 
 export function FormTicket({ eventId }: { eventId: string }) {
+  const [eventStatus, setEventStatus] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const searchParams = useSearchParams();
   const ticketName = searchParams.get("ticketName");
   const [selectedImage, setSelectedImage] = useState<File | undefined>(undefined);
@@ -91,14 +94,16 @@ export function FormTicket({ eventId }: { eventId: string }) {
       });
     }
   }
-  const [eventStatus, setEventStatus] = useState<boolean>(false);
 
   const statusEvent = async (id: string) => {
+    setIsLoading(true);
     try {
       await checkEventStatusById(id);
+      setIsLoading(false);
       setEventStatus(true);
       return true;
     } catch (error) {
+      setIsLoading(false);
       setEventStatus(false);
       return false;
     }
@@ -111,6 +116,10 @@ export function FormTicket({ eventId }: { eventId: string }) {
 
     fetchEventStatus();
   }, [eventId]);
+
+  if (isLoading) {
+    return <FormTicketSkeleton />;
+  }
 
   return (
     <>
