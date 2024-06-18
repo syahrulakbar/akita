@@ -56,7 +56,6 @@ export function FormTicket({ eventId }: { eventId: string }) {
   const searchParams = useSearchParams();
   const ticketName = searchParams.get("ticketName");
   const [selectedImage, setSelectedImage] = useState<File | undefined>(undefined);
-  const [eventStatus, setEventStatus] = useState<boolean>(false);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -92,6 +91,7 @@ export function FormTicket({ eventId }: { eventId: string }) {
       });
     }
   }
+  const [eventStatus, setEventStatus] = useState<boolean>(false);
 
   const statusEvent = async (id: string) => {
     try {
@@ -105,7 +105,11 @@ export function FormTicket({ eventId }: { eventId: string }) {
   };
 
   useEffect(() => {
-    statusEvent(eventId);
+    const fetchEventStatus = async () => {
+      await statusEvent(eventId);
+    };
+
+    fetchEventStatus();
   }, [eventId]);
 
   return (

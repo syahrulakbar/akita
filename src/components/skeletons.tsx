@@ -175,9 +175,9 @@ export function FormTicketSkeleton() {
       <p className="text-sm font-light">
         Pastikan teman-teman mengisi data diri dengan benar dan teliti
       </p>
-      <Skeleton className="w-[100px] h-[20px] rounded-full" />
-      <Skeleton className="w-[100px] h-[20px] rounded-full" />
-      <Skeleton className="w-[100px] h-[20px] rounded-full" />
+      <Skeleton className="w-[100px] h-[100px] rounded-full" />
+      <Skeleton className="w-[100px] h-[100px] rounded-full" />
+      <Skeleton className="w-[100px] h-[100px] rounded-full" />
     </div>
   );
 }
