@@ -175,11 +175,11 @@ export function FormTicketSkeleton() {
       <p className="text-sm font-light">
         Pastikan teman-teman mengisi data diri dengan benar dan teliti
       </p>
-      <div className="flex flex-col gap-2">
-        <Skeleton className="w-[100px] h-[100px] rounded-md" />
-        <Skeleton className="w-[100px] h-[100px] rounded-md" />
-        <Skeleton className="w-[100px] h-[100px] rounded-md" />
-        <Skeleton className="w-[100px] h-[500px] rounded-md" />
+      <div className="w-full lg:w-2/3 space-y-6">
+        <Skeleton className="w-full h-[100px] rounded-md" />
+        <Skeleton className="w-full h-[100px] rounded-md" />
+        <Skeleton className="w-full h-[100px] rounded-md" />
+        <Skeleton className="w-full h-[500px] rounded-md" />
       </div>
     </div>
   );
