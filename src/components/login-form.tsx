@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { signIn } from "@/actions/user";
+import { Loader2 } from "lucide-react";
 
 const FormSchema = z.object({
   email: z
@@ -41,6 +42,7 @@ export default function LoginForm() {
       email: "",
       password: "",
     },
+    mode: "onChange",
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -96,8 +98,19 @@ export default function LoginForm() {
               )}
             />
 
-            <Button type="submit" className="w-full">
-              Submit
+            <Button
+              disabled={!form.formState.isDirty || form.formState.isSubmitting}
+              type="submit"
+              className="w-full"
+            >
+              {form.formState.isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Please wait
+                </>
+              ) : (
+                "Submit"
+              )}
             </Button>
           </form>
         </Form>

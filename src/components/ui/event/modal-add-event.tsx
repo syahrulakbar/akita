@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { CalendarIcon, Plus } from "lucide-react";
+import { CalendarIcon, Loader2, Plus } from "lucide-react";
 import { format } from "date-fns";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -73,6 +73,7 @@ export function ModalAddEvent() {
       start_date: new Date(),
       end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
     },
+    mode: "onChange",
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -224,7 +225,19 @@ export function ModalAddEvent() {
               )}
             />
             <DialogFooter>
-              <Button type="submit">Save changes</Button>
+              <Button
+                disabled={!form.formState.isDirty || form.formState.isSubmitting}
+                type="submit"
+              >
+                {form.formState.isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Please wait
+                  </>
+                ) : (
+                  "Save changes"
+                )}
+              </Button>
             </DialogFooter>
           </form>
         </Form>

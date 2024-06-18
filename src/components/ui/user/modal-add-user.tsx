@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Plus } from "lucide-react";
+import { Loader2, Plus } from "lucide-react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -69,6 +69,7 @@ export function ModalAddUser() {
       password: "",
       roleId: "",
     },
+    mode: "onChange",
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -184,7 +185,19 @@ export function ModalAddUser() {
             />
 
             <DialogFooter>
-              <Button type="submit">Save changes</Button>
+              <Button
+                disabled={!form.formState.isDirty || form.formState.isSubmitting}
+                type="submit"
+              >
+                {form.formState.isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Please wait
+                  </>
+                ) : (
+                  "Submit"
+                )}
+              </Button>
             </DialogFooter>
           </form>
         </Form>

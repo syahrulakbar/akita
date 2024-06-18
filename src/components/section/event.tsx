@@ -54,7 +54,7 @@ export default async function Event({
       id="event"
       className="mx-auto flex flex-col gap-10 items-center min-h-screen max-w-7xl px-5 py-10  lg:p-20"
     >
-      <div className=" flex flex-col gap-3 items-center">
+      <div className=" flex flex-col gap-3 items-center justify-center">
         <div>
           <p className="text-sky-500 bg-sky-100 rounded-full inline-block px-5 py-1">Event</p>
         </div>

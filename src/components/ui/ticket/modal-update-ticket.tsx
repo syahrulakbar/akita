@@ -5,12 +5,13 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { ImagePlus, Pencil } from "lucide-react";
+import { ImagePlus, Loader2, Pencil } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -72,6 +73,7 @@ export function ModalUpdateTicket({ ticket }: { ticket: TicketsTable }) {
       email,
       total_ticket,
     },
+    mode: "onChange",
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -190,9 +192,21 @@ export function ModalUpdateTicket({ ticket }: { ticket: TicketsTable }) {
                 <ImagePlus />
               )}
             </div>
-            <Button type="submit" className="w-full">
-              Submit
-            </Button>
+            <DialogFooter>
+              <Button
+                disabled={!form.formState.isDirty || form.formState.isSubmitting}
+                type="submit"
+              >
+                {form.formState.isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Please wait
+                  </>
+                ) : (
+                  "Save changes"
+                )}
+              </Button>
+            </DialogFooter>
           </form>
         </Form>
       </DialogContent>

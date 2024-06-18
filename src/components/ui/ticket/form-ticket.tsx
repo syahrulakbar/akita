@@ -17,9 +17,10 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import Image from "next/image";
-import { ImagePlus } from "lucide-react";
+import { ImagePlus, Loader2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { addTicket } from "@/actions/ticket";
+import { DialogFooter } from "../dialog";
 
 const MAX_FILE_SIZE = 1024 * 1024 * 3;
 const ACCEPTED_IMAGE_MIME_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
@@ -184,9 +185,18 @@ export function FormTicket({ eventId }: { eventId: string }) {
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full">
-            Submit
-          </Button>
+          <DialogFooter>
+            <Button disabled={!form.formState.isDirty || form.formState.isSubmitting} type="submit">
+              {form.formState.isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Please wait
+                </>
+              ) : (
+                "Submit"
+              )}
+            </Button>
+          </DialogFooter>
         </form>
       </Form>
     </>
