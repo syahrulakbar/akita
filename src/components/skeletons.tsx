@@ -167,3 +167,17 @@ export function TicketsTableSkeleton() {
     </main>
   );
 }
+
+export function FormTicketSkeleton() {
+  return (
+    <div className="flex items-center justify-center flex-col text-center">
+      <h2 className="font-bold text-xl  md:text-2xl lg:text-3xl">Formulir Pembelian Ticket</h2>
+      <p className="text-sm font-light">
+        Pastikan teman-teman mengisi data diri dengan benar dan teliti
+      </p>
+      <Skeleton className="w-[100px] h-[20px] rounded-full" />
+      <Skeleton className="w-[100px] h-[20px] rounded-full" />
+      <Skeleton className="w-[100px] h-[20px] rounded-full" />
+    </div>
+  );
+}
