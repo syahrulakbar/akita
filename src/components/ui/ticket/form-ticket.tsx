@@ -15,12 +15,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ImagePlus, Loader2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { addTicket } from "@/actions/ticket";
 import { DialogFooter } from "../dialog";
+import NotFoundEvent from "../event/not-found-event";
+import { checkEventStatusById } from "@/actions/event";
 
 const MAX_FILE_SIZE = 1024 * 1024 * 3;
 const ACCEPTED_IMAGE_MIME_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
@@ -54,6 +56,7 @@ export function FormTicket({ eventId }: { eventId: string }) {
   const searchParams = useSearchParams();
   const ticketName = searchParams.get("ticketName");
   const [selectedImage, setSelectedImage] = useState<File | undefined>(undefined);
+  const [eventStatus, setEventStatus] = useState<boolean>(false);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -90,115 +93,140 @@ export function FormTicket({ eventId }: { eventId: string }) {
     }
   }
 
+  const statusEvent = async (id: string) => {
+    try {
+      await checkEventStatusById(id);
+      setEventStatus(true);
+      return true;
+    } catch (error) {
+      setEventStatus(false);
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    statusEvent(eventId);
+  }, [eventId]);
+
   return (
     <>
-      <div className="flex items-center justify-center flex-col text-center">
-        <h2 className="font-bold text-xl  md:text-2xl lg:text-3xl">
-          Formulir Pembelian {ticketName}
-        </h2>
-        <p className="text-sm font-light">
-          Pastikan teman-teman mengisi data diri dengan benar dan teliti
-        </p>
-      </div>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full lg:w-2/3 space-y-6">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="John Doe" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="johndoe@johndoe.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+      {eventStatus ? (
+        <>
+          <div className="flex items-center justify-center flex-col text-center">
+            <h2 className="font-bold text-xl  md:text-2xl lg:text-3xl">
+              Formulir Pembelian {ticketName}
+            </h2>
+            <p className="text-sm font-light">
+              Pastikan teman-teman mengisi data diri dengan benar dan teliti
+            </p>
+          </div>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full lg:w-2/3 space-y-6">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John Doe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder="johndoe@johndoe.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="total_ticket"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Total Ticket</FormLabel>
-                <FormControl>
-                  <Input {...field} type="number" min={1} max={20} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+              <FormField
+                control={form.control}
+                name="total_ticket"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Total Ticket</FormLabel>
+                    <FormControl>
+                      <Input {...field} type="number" min={1} max={20} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="proof_of_payment"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Proof of Payment</FormLabel>
-                <div className="flex relative h-[300px] items-center justify-center border rounded-md">
-                  {selectedImage ? (
-                    <Image
-                      alt={"image preview"}
-                      src={URL.createObjectURL(selectedImage)}
-                      fill
-                      objectFit="contain"
-                      className="rounded-md "
-                    />
+              <FormField
+                control={form.control}
+                name="proof_of_payment"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Proof of Payment</FormLabel>
+                    <div className="flex relative h-[300px] items-center justify-center border rounded-md">
+                      {selectedImage ? (
+                        <Image
+                          alt={"image preview"}
+                          src={URL.createObjectURL(selectedImage)}
+                          fill
+                          objectFit="contain"
+                          className="rounded-md "
+                        />
+                      ) : (
+                        <ImagePlus />
+                      )}
+                      <FormControl>
+                        <Input
+                          id="picture"
+                          type="file"
+                          placeholder="Upload Photo"
+                          accept="image/*"
+                          onBlur={field.onBlur}
+                          name={field.name}
+                          onChange={(e) => {
+                            if (e.target.files && e.target.files.length > 0) {
+                              field.onChange(e.target.files[0]);
+                              setSelectedImage(e.target.files[0]);
+                            }
+                          }}
+                          ref={field.ref}
+                          className=" absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+                        />
+                      </FormControl>
+                    </div>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <DialogFooter>
+                <Button
+                  className="w-full"
+                  disabled={!form.formState.isDirty || form.formState.isSubmitting}
+                  type="submit"
+                >
+                  {form.formState.isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Please wait
+                    </>
                   ) : (
-                    <ImagePlus />
+                    "Submit"
                   )}
-                  <FormControl>
-                    <Input
-                      id="picture"
-                      type="file"
-                      placeholder="Upload Photo"
-                      accept="image/*"
-                      onBlur={field.onBlur}
-                      name={field.name}
-                      onChange={(e) => {
-                        if (e.target.files && e.target.files.length > 0) {
-                          field.onChange(e.target.files[0]);
-                          setSelectedImage(e.target.files[0]);
-                        }
-                      }}
-                      ref={field.ref}
-                      className=" absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
-                    />
-                  </FormControl>
-                </div>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <DialogFooter>
-            <Button disabled={!form.formState.isDirty || form.formState.isSubmitting} type="submit">
-              {form.formState.isSubmitting ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Please wait
-                </>
-              ) : (
-                "Submit"
-              )}
-            </Button>
-          </DialogFooter>
-        </form>
-      </Form>
+                </Button>
+              </DialogFooter>
+            </form>
+          </Form>
+        </>
+      ) : (
+        <NotFoundEvent />
+      )}
     </>
   );
 }

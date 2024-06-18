@@ -41,3 +41,13 @@ export async function updateEventById(eventId: string, event: Event) {
     console.error(error);
   }
 }
+export async function checkEventStatusById(eventId: string) {
+  try {
+    const response = await axios.get(`${API_SERVER}/api/event/${eventId}`);
+    const { data } = response.data;
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}

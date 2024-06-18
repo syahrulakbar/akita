@@ -15,6 +15,7 @@ export default async function Page({
 }) {
   const query = searchParams?.query || "";
   const events = await getAllEvents(query);
+
   return (
     <main>
       <h1 className={`mb-4 text-xl md:text-2xl`}>Events</h1>
