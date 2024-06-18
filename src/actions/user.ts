@@ -7,7 +7,7 @@ export async function getAllUsers(query: string) {
   try {
     const response = await fetch(`${API_SERVER}/api/users?name=${query}&email=${query}`, {
       credentials: "include",
-      cache: "no-cache",
+      cache: "no-store",
     });
 
     const data = await response.json();

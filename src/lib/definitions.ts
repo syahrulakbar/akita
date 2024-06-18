@@ -53,3 +53,14 @@ export type LoginData = {
   email: string;
   password: string;
 };
+export type Status = {
+  pending: number;
+  approved: number;
+  rejected: number;
+};
+
+export type Dashboard = {
+  event_name: string;
+  status: Status;
+  total: number;
+};
