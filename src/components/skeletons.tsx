@@ -170,18 +170,16 @@ export function TicketsTableSkeleton() {
 
 export function FormTicketSkeleton() {
   return (
-    <div className="mx-auto w-full flex flex-col gap-3 items-center min-h-screen max-w-7xl px-5 py-10 mt-10 lg:p-20 justify-center">
-      <div className="w-full flex items-center justify-center flex-col text-center gap-1">
-        <h2 className="font-bold text-xl  md:text-2xl lg:text-3xl">Formulir Pembelian Ticket</h2>
-        <p className="text-sm font-light">
-          Pastikan teman-teman mengisi data diri dengan benar dan teliti
-        </p>
-        <div className="w-full flex flex-col space-y-6">
-          <Skeleton className=" h-[50px] rounded-md" />
-          <Skeleton className=" h-[50px] rounded-md" />
-          <Skeleton className=" h-[50px] rounded-md" />
-          <Skeleton className=" h-[500px] rounded-md" />
-        </div>
+    <div className="w-full flex items-center justify-center flex-col text-center gap-1">
+      <h2 className="font-bold text-xl  md:text-2xl lg:text-3xl">Formulir Pembelian Ticket</h2>
+      <p className="text-sm font-light">
+        Pastikan teman-teman mengisi data diri dengan benar dan teliti
+      </p>
+      <div className="w-full flex flex-col space-y-6">
+        <Skeleton className=" h-[50px] rounded-md" />
+        <Skeleton className=" h-[50px] rounded-md" />
+        <Skeleton className=" h-[50px] rounded-md" />
+        <Skeleton className=" h-[500px] rounded-md" />
       </div>
     </div>
   );

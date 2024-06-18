@@ -99,11 +99,11 @@ export function FormTicket({ eventId }: { eventId: string }) {
     setIsLoading(true);
     try {
       await checkEventStatusById(id);
-      // setIsLoading(false);
+      setIsLoading(false);
       setEventStatus(true);
       return true;
     } catch (error) {
-      // setIsLoading(false);
+      setIsLoading(false);
       setEventStatus(false);
       return false;
     }
