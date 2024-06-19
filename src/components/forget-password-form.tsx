@@ -15,9 +15,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import { signIn } from "@/actions/user";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
+import { resetPassword } from "@/actions/user";
 
 const FormSchema = z.object({
   email: z
@@ -27,36 +27,29 @@ const FormSchema = z.object({
     .email({
       message: "Email must be a valid email address.",
     }),
-  password: z
-    .string({
-      message: "Password is required",
-    })
-    .min(6, "Password must be at least 6 characters"),
 });
 
-export default function LoginForm() {
+export default function ForgetPasswordForm() {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
     mode: "onChange",
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      await signIn(data);
-      router.push("/dashboard");
+      await resetPassword(data);
+      router.push("/login");
       toast({
-        title: "Success Login",
-        description: "You have successfully logged in.",
+        title: "Token Sent",
+        description: "Check your email for the reset link.",
       });
       form.reset({
         email: "",
-        password: "",
       });
     } catch (error) {
       toast({
@@ -68,8 +61,9 @@ export default function LoginForm() {
 
   return (
     <div className="space-y-3">
+      <a href="http://" target="_blank" rel="noopener noreferrer"></a>
       <div className="flex-1 rounded-lg  px-6 pb-4 pt-8">
-        <h1 className={`mb-3 text-xl`}>Please log in to continue.</h1>
+        <h1 className={`mb-3 text-xl`}>Recover Password</h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
             <FormField
@@ -85,24 +79,6 @@ export default function LoginForm() {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input placeholder="*******" type="password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="flex justify-end text-sm">
-              <Link href="/forget-password" className="text-blue-500 hover:underline">
-                Forgot your password?
-              </Link>
-            </div>
 
             <Button
               disabled={!form.formState.isDirty || form.formState.isSubmitting}
@@ -118,6 +94,11 @@ export default function LoginForm() {
                 "Submit"
               )}
             </Button>
+            <div className="flex justify-start text-sm">
+              <Link href="/login" className="text-blue-500 hover:underline">
+                Back to login
+              </Link>
+            </div>
           </form>
         </Form>
       </div>

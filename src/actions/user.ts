@@ -80,3 +80,36 @@ export async function checkUser() {
     throw error;
   }
 }
+
+export async function resetPassword({ email }: { email: string }) {
+  try {
+    const response = await axios.post(`${API_SERVER}/api/forget-password`, { email });
+    const { data } = response.data;
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export async function verifyToken(token: string) {
+  console.log(token);
+  try {
+    const response = await axios.get(`${API_SERVER}/api/verify-token/${token}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export async function changePassword({ password, token }: { password: string; token: string }) {
+  try {
+    const response = await axios.post(`${API_SERVER}/api/reset-password/${token}`, { password });
+    const { data } = response.data;
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
