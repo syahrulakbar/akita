@@ -19,6 +19,9 @@ export default function Footer() {
                 {item.name}
               </Link>
             ))}
+            <Link href={"/dashboard"} className="hover:text-akita">
+              Dashboard
+            </Link>
           </ul>
         </div>
         <div className="contact flex flex-col gap-3">

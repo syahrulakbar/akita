@@ -4,6 +4,7 @@ import Contact from "@/components/section/contact";
 import Gallery from "@/components/section/gallery";
 import Hero from "@/components/section/hero";
 import Testimonial from "@/components/section/testimonial";
+import Faq from "@/components/section/faq";
 
 const Event = dynamic(() => import("@/components/section/event"), { ssr: false });
 
@@ -15,6 +16,7 @@ export default function Home() {
       <About />
       <Gallery />
       <Event />
+      <Faq />
       <Contact />
     </>
   );
