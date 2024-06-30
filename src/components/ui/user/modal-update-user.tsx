@@ -37,7 +37,7 @@ import {
   SelectValue,
 } from "../select";
 import { UsersTable } from "@/lib/definitions";
-import { updateUserById } from "@/actions/user";
+import { updateUserById } from "@/app/actions/user";
 
 const FormSchema = z.object({
   name: z

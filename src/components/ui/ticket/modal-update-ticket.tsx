@@ -28,7 +28,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { TicketsTable } from "@/lib/definitions";
 import Image from "next/image";
-import { updateTicketById } from "@/actions/ticket";
+import { updateTicketById } from "@/app/actions/ticket";
 import {
   Select,
   SelectContent,

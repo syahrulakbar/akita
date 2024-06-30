@@ -14,7 +14,7 @@ import { EventsTable } from "@/lib/definitions";
 import moment from "moment";
 import { ModalUpdateEvent } from "./modal-update-event";
 import Search from "../../search";
-import { deleteEventById } from "@/actions/event";
+import { deleteEventById } from "@/app/actions/event";
 import { useRouter } from "next/navigation";
 import { toast } from "../use-toast";
 

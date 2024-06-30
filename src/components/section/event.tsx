@@ -1,4 +1,4 @@
-import { getAllEvents } from "@/actions/event";
+import { getAllEvents } from "@/app/actions/event";
 import { EventsTable } from "@/lib/definitions";
 import Image from "next/image";
 import Link from "next/link";

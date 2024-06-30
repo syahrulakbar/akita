@@ -17,7 +17,7 @@ import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
-import { resetPassword } from "@/actions/user";
+import { resetPassword } from "@/app/actions/user";
 
 const FormSchema = z.object({
   email: z

@@ -36,7 +36,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../select";
-import { addUser } from "@/actions/user";
+import { addUser } from "@/app/actions/user";
 
 const FormSchema = z.object({
   name: z

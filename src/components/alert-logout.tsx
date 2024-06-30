@@ -13,7 +13,7 @@ import {
 import { PowerIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { toast } from "./ui/use-toast";
-import { signOut } from "@/actions/user";
+import { signOut } from "@/app/actions/user";
 
 export function AlertDialogLogout() {
   const router = useRouter();

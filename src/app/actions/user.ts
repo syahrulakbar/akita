@@ -81,6 +81,20 @@ export async function checkUser() {
   }
 }
 
+export async function refreshToken(token: string | undefined) {
+  try {
+    const response = await axios.get(`${API_SERVER}/api/users/admin`, {
+      withCredentials: true,
+      headers: { refreshToken: token },
+    });
+    const { data } = response.data;
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
 export async function resetPassword({ email }: { email: string }) {
   try {
     const response = await axios.post(`${API_SERVER}/api/forget-password`, { email });
@@ -93,7 +107,6 @@ export async function resetPassword({ email }: { email: string }) {
 }
 
 export async function verifyToken(token: string) {
-  console.log(token);
   try {
     const response = await axios.get(`${API_SERVER}/api/verify-token/${token}`);
     return response.data;

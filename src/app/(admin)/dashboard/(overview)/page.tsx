@@ -1,4 +1,4 @@
-import { getAllData } from "@/actions/dashboard";
+import { getAllData } from "@/app/actions/dashboard";
 import TableDashboard from "@/components/ui/dashboard/table-dashboard";
 import { Metadata } from "next";
 

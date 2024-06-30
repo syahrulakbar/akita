@@ -15,7 +15,7 @@ import Search from "@/components/search";
 import { ModalAddUser } from "./modal-add-user";
 import { UsersTable } from "@/lib/definitions";
 import { ModalUpdateUser } from "./modal-update-user";
-import { deleteUserById } from "@/actions/user";
+import { deleteUserById } from "@/app/actions/user";
 
 export default function TableUser({ users }: { users: UsersTable[] }) {
   const router = useRouter();

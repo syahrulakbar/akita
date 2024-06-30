@@ -19,11 +19,13 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ImagePlus, Loader2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { addTicket } from "@/actions/ticket";
+import { addTicket } from "@/app/actions/ticket";
 import { DialogFooter } from "../dialog";
 import NotFoundEvent from "../event/not-found-event";
-import { checkEventStatusById } from "@/actions/event";
+import { checkEventStatusById } from "@/app/actions/event";
 import { FormTicketSkeleton } from "@/components/skeletons";
+import { Event } from "@/lib/definitions";
+import CopyClipboard from "../copy-clipboard";
 
 const MAX_FILE_SIZE = 1024 * 1024 * 3;
 const ACCEPTED_IMAGE_MIME_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
@@ -44,6 +46,11 @@ const FormSchema = z.object({
     .int()
     .positive()
     .min(1, { message: "Total ticket should be at least 1" }),
+  total_amount: z
+    .number()
+    .int()
+    .positive()
+    .min(1, { message: "Total amount should be at least 1" }),
   proof_of_payment: z
     .instanceof(File)
     .refine((file) => file.size <= MAX_FILE_SIZE, "File size should be less than 3MB")
@@ -54,6 +61,12 @@ const FormSchema = z.object({
 });
 
 export function FormTicket({ eventId }: { eventId: string }) {
+  const [event, setEvent] = useState<Event>({
+    event_name: "",
+    price: 0,
+    start_date: new Date(),
+    end_date: new Date(),
+  });
   const [eventStatus, setEventStatus] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const searchParams = useSearchParams();
@@ -67,9 +80,13 @@ export function FormTicket({ eventId }: { eventId: string }) {
       name: "",
       email: "",
       total_ticket: 1,
+      total_amount: event.price || 0,
       proof_of_payment: selectedImage,
     },
   });
+
+  const { watch, setValue } = form;
+  const total_ticket = watch("total_ticket");
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
@@ -83,6 +100,7 @@ export function FormTicket({ eventId }: { eventId: string }) {
         name: "",
         email: "",
         total_ticket: 1,
+        total_amount: event.price || 0,
         proof_of_payment: selectedImage,
       });
 
@@ -98,7 +116,8 @@ export function FormTicket({ eventId }: { eventId: string }) {
   const statusEvent = async (id: string) => {
     setIsLoading(true);
     try {
-      await checkEventStatusById(id);
+      const data = await checkEventStatusById(id);
+      setEvent(data);
       setIsLoading(false);
       setEventStatus(true);
       return true;
@@ -116,6 +135,10 @@ export function FormTicket({ eventId }: { eventId: string }) {
 
     fetchEventStatus();
   }, [eventId]);
+
+  useEffect(() => {
+    setValue("total_amount", event.price * total_ticket);
+  }, [total_ticket, setValue, event.price]);
 
   if (isLoading) {
     return <FormTicketSkeleton />;
@@ -167,7 +190,7 @@ export function FormTicket({ eventId }: { eventId: string }) {
                 name="total_ticket"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Total Ticket</FormLabel>
+                    <FormLabel>Ticket Purchased</FormLabel>
                     <FormControl>
                       <Input {...field} type="number" min={1} max={20} />
                     </FormControl>
@@ -175,6 +198,36 @@ export function FormTicket({ eventId }: { eventId: string }) {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="total_amount"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Total Amount</FormLabel>
+                    <FormControl>
+                      <div className="relative">
+                        <Input {...field} type="number" disabled className="pl-10" />
+                        <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-sm">
+                          Rp
+                        </span>
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div>
+                <FormLabel>Payment Method</FormLabel>
+                <div className="flex justify-center items-center">
+                  <Image
+                    src="/images/qris.jpg"
+                    alt="QRIS"
+                    width={400}
+                    height={400}
+                    objectFit="contain"
+                  />
+                </div>
+              </div>
 
               <FormField
                 control={form.control}

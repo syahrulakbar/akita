@@ -1,6 +1,6 @@
 "use client";
 
-import { checkUser } from "@/actions/user";
+import { checkUser } from "@/app/actions/user";
 import SideNav from "@/components/ui/dashboard/sidenav";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
