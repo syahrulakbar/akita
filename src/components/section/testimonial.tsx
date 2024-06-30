@@ -13,7 +13,7 @@ export default function Testimonial() {
       </div>
       <h2 className="text-center font-bold text-4xl">Our Client</h2>
       <p className="text-center">
-        {`Let’s Take a Look at Our Incredible Clients and Their Opinion About Us`}
+        {`Let’s Take a Look at Our Incredible Clients, Guest Stars, Visitors and Their Opinion About Us`}
       </p>
       <Marque />
       <SwiperComponent />

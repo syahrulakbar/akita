@@ -33,7 +33,7 @@ export default function Ticket({ event }: { event: EventsTable }) {
                   rel="noopener noreferrer"
                 >
                   <Image
-                    src={"/images/senshi.png"}
+                    src={"/images/akita.png"}
                     alt="logo"
                     width={50}
                     height={50}
@@ -116,13 +116,7 @@ export default function Ticket({ event }: { event: EventsTable }) {
             <div className="px-4 sm:px-6 pt-4 sm:pt-6 flex flex-col flex-grow">
               <div className="flex flex-row items-center gap-x-3">
                 <p>
-                  <Image
-                    src={"/images/senshi.png"}
-                    alt="logo"
-                    width={50}
-                    height={50}
-                    className="bg-white rounded-full"
-                  />
+                  <Image src={"/images/akita.png"} alt="logo" width={50} height={50} />
                 </p>
                 <div className="flex flex-col items-start gap-y-1">
                   <p className="font-semibold tracking-tight !leading-1.4 text-black dark:text-white">
@@ -130,12 +124,13 @@ export default function Ticket({ event }: { event: EventsTable }) {
                   </p>
                   <div className="flex items-center gap-x-1.5 text-xs sm:text-sm">
                     <span className="flex aspect-square w-2 relative">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-red-500"></span>
                       <span className="relative inline-flex rounded-full aspect-square w-2 bg-red-500"></span>
                     </span>
-                    <span className="tracking-tight">Expired</span>
+                    <span className="tracking-tight">Sold Out</span>
                   </div>
                   <span className="text-xs sm:text-sm tracking-tight text-gray-500 dark:text-gray-400 v-popper--has-tooltip">
-                    <span>The ticket was expired</span>&nbsp;
+                    <span>The ticket was sold out</span>&nbsp;
                   </span>
                 </div>
               </div>
