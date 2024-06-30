@@ -1,4 +1,4 @@
-import { getAllUsers } from "@/actions/user";
+import { getAllUsers } from "@/app/actions/user";
 import TableUser from "@/components/ui/user/table-user";
 import { Metadata } from "next";
 

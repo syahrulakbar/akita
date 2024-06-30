@@ -7,7 +7,7 @@ import { GeistSans } from "geist/font/sans";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "Senshi Matsuri",
+  title: "Akita Japan Fest",
   description: "Let's make the best japanese festival in the world!",
   keywords:
     "event, agency, festival, japan, japanese, culture, food, music, dance, art, performance, entertainment, fun, family, friends, community, celebration, tradition, history",

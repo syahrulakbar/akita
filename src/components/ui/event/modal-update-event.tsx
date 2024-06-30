@@ -31,7 +31,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { updateEventById } from "@/actions/event";
+import { updateEventById } from "@/app/actions/event";
 import { EventsTable } from "@/lib/definitions";
 import moment from "moment";
 

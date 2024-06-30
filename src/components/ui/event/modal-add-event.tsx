@@ -31,7 +31,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { addEvent } from "@/actions/event";
+import { addEvent } from "@/app/actions/event";
 
 const FormSchema = z
   .object({

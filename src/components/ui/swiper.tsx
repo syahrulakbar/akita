@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import Image from "next/image";
 import { CLIENTS } from "@/constant";
+import { CircleUserRound } from "lucide-react";
 
 export default function SwiperComponent() {
   return (
@@ -31,14 +32,8 @@ export default function SwiperComponent() {
                 <div className="message">
                   <p className="text-lg lg:text-xl text-black dark:text-white  ">{`"${client.message}"`}</p>
                 </div>
-                <div className="flex flex-row items-center gap-5 border-t border-slate-300 py-5">
-                  <Image
-                    alt="profile pict"
-                    src={client.profile.image}
-                    width={50}
-                    height={50}
-                    className="rounded-full object-contain"
-                  />
+                <div className="flex flex-row items-center gap-5 border-t border-slate-300 py-5 text-akita">
+                  <CircleUserRound width={32} height={32} />
                   <div className="profile">
                     <h5 className="text-akita font-semibold text-sm sm:text-base lg:text-lg">
                       {client.profile.name}

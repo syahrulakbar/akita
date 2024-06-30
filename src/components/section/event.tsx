@@ -1,4 +1,4 @@
-import { getAllEvents } from "@/actions/event";
+import { getAllEvents } from "@/app/actions/event";
 import { EventsTable } from "@/lib/definitions";
 import Image from "next/image";
 import Link from "next/link";
@@ -62,15 +62,6 @@ export default async function Event({
         <p className="text-center">{"Let's Have Fun With Us!"}</p>
       </div>
       <div className=" min-h-screen w-full flex flex-col  gap-5">
-        <div className="flex items-center justify-center">
-          <Image
-            src={"/images/senshi.png"}
-            alt="logo"
-            width={100}
-            height={100}
-            className="bg-white rounded-full"
-          />
-        </div>
         <div className="flex flex-col lg:flex-row gap-2 items-center">
           <div className="w-full lg:w-1/2 flex flex-col gap-1 items-center justify-center">
             <div className="relative  group hover:border-sky-500 border  rounded-md text-center  px-3 py-10">
@@ -89,7 +80,7 @@ export default async function Event({
                 src={"/images/ticket.png"}
                 alt="logo"
                 fill
-                className="rounded-lg  object-contain"
+                className="rounded-lg object-contain"
               />
             </div>
           </div>
@@ -149,13 +140,13 @@ export default async function Event({
                   Save The Date
                 </p>
               </div>
-              <h3 className="uppercase font-bold text-4xl ">August 25, 2024</h3>
-              <p className=" text-sm font-light text-black dark:text-white">{`Taman Andang Pangrenan Purwokerto`}</p>
+              <h3 className="uppercase font-bold text-4xl ">XXXX XX, XXXX</h3>
+              <p className=" text-sm font-light text-black dark:text-white">{`To Be Announced`}</p>
             </div>
           </div>
           <div className="w-full lg:w-1/2">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.222204519528!2d109.24118527484059!3d-7.440649092570328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655c2b6b21a7cf%3A0xaf087e189c86422e!2sTaman%20Andhang%20Pangrenan%20Purwokerto!5e0!3m2!1sid!2sid!4v1718452231456!5m2!1sid!2sid"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63301.05119119493!2d109.1932237541645!3d-7.430274000493957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655c3136423d1d%3A0x4027a76e352e4a0!2sPurwokerto%2C%20Kabupaten%20Banyumas%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1719736305021!5m2!1sid!2sid"
               width="100%"
               height="300"
               style={{ border: "0" }}

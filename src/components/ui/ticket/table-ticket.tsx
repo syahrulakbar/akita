@@ -12,7 +12,7 @@ import { AlertDialogDelete } from "@/components/alert-delete";
 import { TicketsTable } from "@/lib/definitions";
 import { toast } from "../use-toast";
 import { useRouter } from "next/navigation";
-import { deleteTicketById } from "@/actions/ticket";
+import { deleteTicketById } from "@/app/actions/ticket";
 import { ModalUpdateTicket } from "./modal-update-ticket";
 import Search from "@/components/search";
 import { DialogViewTicket } from "./dialog-view-ticket";

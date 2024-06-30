@@ -42,7 +42,7 @@ export const CONTACT = [
   {
     icon: "Mail",
     name: "Mail Us",
-    href: "https://www.tiktok.com/@akitajapanfestival",
+    href: "mailto:akitajapanfest@gmail.com",
   },
 ];
 
@@ -53,7 +53,6 @@ export const CLIENTS = [
     profile: {
       name: "Mochamad Syahrul Akbar",
       position: "CTO Akita Japan Fest",
-      image: "/images/profile/akbar.jpeg",
     },
   },
   {
@@ -61,8 +60,6 @@ export const CLIENTS = [
     profile: {
       name: "Muhammad Fikri Nabil Assyawali",
       position: "Founder Akita Japan Fest",
-      image:
-        "https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
   {
@@ -70,8 +67,6 @@ export const CLIENTS = [
     profile: {
       name: "Pambayun Ginanjar",
       position: "Founder Akita Japan Fest",
-      image:
-        "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
   {
@@ -79,8 +74,6 @@ export const CLIENTS = [
     profile: {
       name: "Avanto Surya Wijaya",
       position: "Founder Akita Japan Fest",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80",
     },
   },
   {
@@ -88,8 +81,6 @@ export const CLIENTS = [
     profile: {
       name: "March Oktavionda",
       position: "Founder Akita Japan Fest",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80",
     },
   },
   {
@@ -97,8 +88,6 @@ export const CLIENTS = [
     profile: {
       name: "Fandi Aditya",
       position: "Founder Akita Japan Fest",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80",
     },
   },
   {
@@ -106,8 +95,6 @@ export const CLIENTS = [
     profile: {
       name: "Yohan",
       position: "Founder Akita Japan Fest",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80",
     },
   },
   {
@@ -115,8 +102,6 @@ export const CLIENTS = [
     profile: {
       name: "Elvin",
       position: "Founder Akita Japan Fest",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80",
     },
   },
 ];

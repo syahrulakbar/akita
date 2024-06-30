@@ -1,4 +1,4 @@
-import { getAllTickets } from "@/actions/ticket";
+import { getAllTickets } from "@/app/actions/ticket";
 import TableTicket from "@/components/ui/ticket/table-ticket";
 import { Metadata } from "next";
 

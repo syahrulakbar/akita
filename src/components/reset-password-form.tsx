@@ -17,7 +17,7 @@ import { toast } from "@/components/ui/use-toast";
 import { notFound, useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { changePassword, verifyToken } from "@/actions/user";
+import { changePassword, verifyToken } from "@/app/actions/user";
 
 const FormSchema = z.object({
   password: z

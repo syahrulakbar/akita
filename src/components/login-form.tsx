@@ -15,9 +15,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import { signIn } from "@/actions/user";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
+import { signIn } from "@/app/actions/user";
 
 const FormSchema = z.object({
   email: z

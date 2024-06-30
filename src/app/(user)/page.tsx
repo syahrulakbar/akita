@@ -8,7 +8,7 @@ import Faq from "@/components/section/faq";
 
 const Event = dynamic(() => import("@/components/section/event"), { ssr: false });
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Hero />
