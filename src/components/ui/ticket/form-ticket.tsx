@@ -25,7 +25,6 @@ import NotFoundEvent from "../event/not-found-event";
 import { checkEventStatusById } from "@/app/actions/event";
 import { FormTicketSkeleton } from "@/components/skeletons";
 import { Event } from "@/lib/definitions";
-import CopyClipboard from "../copy-clipboard";
 
 const MAX_FILE_SIZE = 1024 * 1024 * 3;
 const ACCEPTED_IMAGE_MIME_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
