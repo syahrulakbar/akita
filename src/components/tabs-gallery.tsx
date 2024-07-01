@@ -126,6 +126,13 @@ export default function TabsGallery() {
               width={350}
               height={100}
             />
+            <Image
+              alt="gallery akita"
+              src={"/images/akita-1/akita-1.16.JPG"}
+              className="object-contain"
+              width={350}
+              height={100}
+            />
           </div>
           <div className="slide-down">
             <Image
@@ -159,6 +166,13 @@ export default function TabsGallery() {
             <Image
               alt="gallery akita"
               src={"/images/akita-1/akita-1.10.JPG"}
+              className="object-contain"
+              width={350}
+              height={100}
+            />
+            <Image
+              alt="gallery akita"
+              src={"/images/akita-1/akita-1.16.JPG"}
               className="object-contain"
               width={350}
               height={100}

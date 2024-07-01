@@ -1,8 +1,8 @@
 import { getAllEvents } from "@/app/actions/event";
 import { EventsTable } from "@/lib/definitions";
 import Image from "next/image";
-import Link from "next/link";
 import Ticket from "../ui/ticket/ticket";
+import { Button } from "../ui/button";
 
 export default async function Event({
   searchParams,
@@ -110,12 +110,12 @@ export default async function Event({
                 <h3 className="uppercase font-bold text-4xl ">{item.name}</h3>
                 <p className=" text-sm font-light text-black dark:text-white">{`Quota: ${item.quota} | Fee: ${item.fee}`}</p>
                 <p className="  text-black dark:text-white font-semibold text-lg">{`Prize Total: ${item.prize}`}</p>
-                <Link
-                  href={item.registration}
+                <Button
+                  variant={"outline"}
                   className="border border-sky-500 group-hover:border-sky-100 rounded-md group-hover:bg-sky-500 group-hover:text-white   p-2 my-2"
                 >
                   Registration Here
-                </Link>
+                </Button>
               </div>
             </div>
             <div className="w-full lg:w-1/2 ">
