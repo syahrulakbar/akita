@@ -33,7 +33,7 @@ export default function About() {
               className="flex flex-col gap-3 group hover:border-sky-500 border p-5 rounded-md overflow-hidden"
             >
               <div className="flex flex-col xl:flex-row items-start xl:items-center gap-2">
-                <div className="lg:bg-sky-100 group-hover:bg-sky-500  transition-all ease-in-out duration-300 group-hover:text-white text-sky-500  overflow-hidden w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] flex items-center justify-center rounded-full">
+                <div className="lg:bg-sky-100 group-hover:bg-sky-500  transition-all ease-in-out duration-300 group-hover:text-white text-sky-500  overflow-hidden w-[40px] h-[40px] lg:w-[50px] lg:h-[50px] flex items-center justify-center rounded-full">
                   <Icon name={item.icon} size={24} />
                 </div>
                 <p className="font-bold text-3xl  lg:text-4xl text-sky-500">{item.total}+</p>
@@ -44,7 +44,7 @@ export default function About() {
           ))}
         </div>
         <div className="w-full relative lg:w-1/2 min-h-[50vh] flex items-center justify-center ">
-          <div className="w-full h-full">
+          <div className="w-full h-full absolute bottom-0">
             <Image alt="logo akita" src={"/images/akitul.png"} fill objectFit="contain" />
           </div>
           <Image

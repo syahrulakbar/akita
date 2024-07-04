@@ -3,6 +3,8 @@ import { EventsTable } from "@/lib/definitions";
 import Image from "next/image";
 import Ticket from "../ui/ticket/ticket";
 import { Button } from "../ui/button";
+import { CalendarDays } from "lucide-react";
+import Link from "next/link";
 
 export default async function Event({
   searchParams,
@@ -58,7 +60,7 @@ export default async function Event({
         <div>
           <p className="text-sky-500 bg-sky-100 rounded-full inline-block px-5 py-1">Event</p>
         </div>
-        <h2 className="font-bold text-4xl">Upcoming Event</h2>
+        <h2 className="font-bold text-4xl text-center">Upcoming Event</h2>
         <p className="text-center">{"Let's Have Fun With Us!"}</p>
       </div>
       <div className=" min-h-screen w-full flex flex-col  gap-5">
@@ -133,8 +135,8 @@ export default async function Event({
         ))}
 
         <div className="flex flex-col lg:flex-row-reverse gap-2 items-center">
-          <div className="w-full lg:w-1/2 flex flex-col gap-1 items-center justify-center">
-            <div className="relative text-sky-500 group hover:border-sky-500 border  rounded-md text-center  px-3 py-10">
+          <div className="w-full lg:w-1/2 ">
+            <div className="relative text-sky-500 group hover:border-sky-500 border  rounded-md text-center  px-3 py-10 flex flex-col gap-1 items-center justify-center">
               <div className="absolute -top-3 w-full">
                 <p className="  bg-sky-100 group-hover:bg-sky-500 group-hover:text-white text-sky-500 uppercase text-sm text-center transition-all ease-in-out duration-300 rounded-full  inline-block px-3 py-1">
                   Save The Date
@@ -142,6 +144,15 @@ export default async function Event({
               </div>
               <h3 className="uppercase font-bold text-4xl ">XXXX XX, XXXX</h3>
               <p className=" text-sm font-light text-black dark:text-white">{`To Be Announced`}</p>
+              <Link
+                href={
+                  "https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=Mm1zaml0OTk0NmRqNnNoZ2wwZ3I4bzJrdWIgYWtpdGFqYXBhbmZlc3RAbQ&tmsrc=akitajapanfest%40gmail.com"
+                }
+                target="_blank"
+                className="flex flex-row items-center gap-2 py-2 px-3 border border-sky-500 group-hover:border-sky-100 rounded-md group-hover:bg-sky-500 group-hover:text-white   p-2 my-2"
+              >
+                <CalendarDays /> Add to Calender
+              </Link>
             </div>
           </div>
           <div className="w-full lg:w-1/2">

@@ -1,6 +1,7 @@
 import { Phone } from "lucide-react";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Contact() {
   return (
@@ -12,9 +13,14 @@ export default function Contact() {
         <h2 className="font-bold text-center text-2xl lg:text-4xl text-white">
           Contact Us For Question or Collaboration
         </h2>
-        <Button className="bg-green-400 px-10 rounded-full text-white hover:dark:text-black text-lg">
+        <Link
+          href={"https://wa.me/62882005359995"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-400 px-10 rounded-full text-white hover:bg-akita transition-all duration-300 ease-in-out hover:border-white border border-green-400 text-lg flex items-center gap-2 py-2"
+        >
           Whatsapp <Phone className="ml-2 h-4 w-4" />
-        </Button>
+        </Link>
       </div>
       <Image
         alt="pattern"
