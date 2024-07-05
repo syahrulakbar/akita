@@ -34,7 +34,7 @@ export default function Navbar() {
           <Link href={"/"} className="uppercase font-bold text-xl">
             秋田県
           </Link>
-          <ul className="hidden lg:flex gap-5">
+          <ul className="hidden md:flex gap-5">
             {NAVBAR.map((item, index) => (
               <li
                 key={index}

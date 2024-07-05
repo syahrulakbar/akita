@@ -19,6 +19,10 @@ export const NAVBAR = [
     name: "Event",
     href: "/#event",
   },
+  {
+    name: "Rekomendasi Cosplay",
+    href: "/cosplay",
+  },
 ];
 
 export const SOCIAL_MEDIA = [
@@ -127,4 +131,38 @@ export const DATA = [
     total: 2,
     title: "Successful Events",
   },
+];
+
+export const CONTRIBUTORS = [
+  "Tania - Purplecaine",
+  "Juichiji - @juichiji22",
+  "Reii-@byby.reiivin",
+  "Sennna.san",
+  "Aharensuica_chan",
+  "Shandy Zenith - @kindlydeadman / @shandyzenth",
+  "rara - @raaskuy",
+  "@Kakaiszz",
+  "@Adi12Suryadi ",
+  "Elsa - ecrafsya",
+  "lila, jst.lila",
+  "Tyas - @kimono_armor",
+  "Daffa pratista @dffdes_",
+  "dygr.ch",
+  "Rifqi @exc.produk",
+  "Saqi - @syauqi_rasya",
+  "@k1rn_4p",
+  "Ryuza<",
+  "Siti nurjanah-inijjh",
+  "Zaky Senpai - @zaky49",
+  "divania_reyna",
+  "Cipaa @dori.xz",
+  "Hiseta - ghiies_",
+  "Frey - aveera.fr",
+  "@ladyaa1_",
+  "zzlivestrongg",
+  "shmz.4s_",
+  "Leyshi - Xieley_",
+  "@liltakemichi5",
+  "r_glang",
+  "Giwangkara Surya Ananda",
 ];
