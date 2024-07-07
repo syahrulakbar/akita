@@ -98,12 +98,12 @@ export default async function Event({
         {COMPETITION.map((item, index) => (
           <div
             key={index}
-            className={`flex gap-5 lg:gap-0 flex-col ${
+            className={`flex gap-2 flex-col ${
               index % 2 === 0 ? "lg:flex-row-reverse " : " lg:flex-row"
-            } gap-2 items-center`}
+            } items-center`}
           >
-            <div className=" w-full lg:w-1/2 flex flex-col gap-1 items-center justify-center">
-              <div className="relative text-sky-500 group hover:border-sky-500 border  rounded-md text-center  px-3 py-10 flex flex-col gap-1 items-center">
+            <div className="w-full lg:w-1/2 flex flex-col gap-3 items-center justify-center">
+              <div className="w-full relative text-sky-500 group hover:border-sky-500 border  rounded-md text-center  px-3 py-10 flex flex-col gap-1 items-center">
                 <div className="absolute -top-3 w-full">
                   <p className="  bg-sky-100 group-hover:bg-sky-500 group-hover:text-white text-sky-500 uppercase text-sm text-center transition-all ease-in-out duration-300 rounded-full  inline-block px-3 py-1">
                     Competition

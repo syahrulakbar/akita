@@ -26,17 +26,22 @@ const FormSchema = z.object({
   budget: z.enum(["minimum", "unlimited"], {
     required_error: "You need to select a budget type.",
   }),
-  skill: z.enum(["sudah", "belum pernah"], {
+  skill: z.enum(["sudah", "belum"], {
     required_error: "You need to select a budget type.",
+  }),
+  accessories: z.enum(["yes", "no"], {
+    required_error: "You need to select a accessories type.",
   }),
 });
 
 export function CosplayForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    mode: "onChange",
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    form.reset();
     toast({
       title: "You submitted the following values:",
       description: (
@@ -182,8 +187,44 @@ export function CosplayForm() {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="accessories"
+          render={({ field }) => (
+            <FormItem className="space-y-3">
+              <FormLabel>Aksesoris Tambahan</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="flex flex-col space-y-1"
+                >
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem value="yes" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Iya</FormLabel>
+                  </FormItem>
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem value="no" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Engga</FormLabel>
+                  </FormItem>
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <Button className="w-full" type="submit">
+        <Button
+          disabled={
+            !form.formState.isDirty || form.formState.isSubmitting || !form.formState.isValid
+          }
+          className="w-full"
+          type="submit"
+        >
           Give Me Recommendation
         </Button>
       </form>
