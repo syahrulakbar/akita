@@ -41,7 +41,6 @@ export function CosplayForm() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    form.reset();
     toast({
       title: "You submitted the following values:",
       description: (

@@ -25,8 +25,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ scrollBehavior: "smooth" }}>
-      <body className={cn("min-h-screen bg-background font-sans antialiased", GeistSans.className)}>
+    <html lang="en">
+      <body
+        style={{ scrollBehavior: "smooth" }}
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased overflow-x-hidden",
+          GeistSans.className,
+        )}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
